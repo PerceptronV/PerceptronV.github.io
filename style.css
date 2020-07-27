@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .background{
     align-content: center;
     border-radius: 100%;
@@ -169,4 +173,28 @@
     animation-delay: 1.2s;
     animation-fill-mode: both;
     z-index: 1;
+}
+
+.license-holder{
+    background-color: black;
+    width: 100%;
+    text-align: center;
+    color: black;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    color: darkgrey;
+}
+
+.icon-holder{
+    background-color: black;
+    height: 50px;
+    width: 100%;
+    z-index: 1;
+    text-align: center;
+    padding: 0px;
+}
+
+.icon{
+    width: 30px;
+    height: 30px;
 }
