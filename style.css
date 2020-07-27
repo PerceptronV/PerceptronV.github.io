@@ -91,9 +91,13 @@ html {
 
 @media screen and (orientation: portrait){
     .tray_element{
-        font-size: 40px;
+        font-size: 50px;
         text-align: right;
         margin-left: 10px;
+    }
+    .top_tray_right{
+        top: 20px;
+        right: 20px;
     }
 }
 
@@ -257,6 +261,12 @@ html {
         width: 160px;
         top: 20%;
     }
+    
+    @keyframes circle_waver{
+    0% {transform: rotate(0deg);}
+    50% {transform: rotate(40deg);}
+    100% {transform: rotate(0deg);}
+}
 }
 
 .circle:hover{
@@ -290,7 +300,16 @@ html {
 
 @media screen and (orientation: portrait){
     .icon{
-        width: 65px;
-        height: 65px;
+        width: 100px;
+        height: 100px;        
+        padding: 20px;
+    }
+    .license-holder{
+        font-size: 37px;
+        padding-bottom: 50px;
+    }
+    .icon-holder{
+        padding-top: 20px;
+        padding-bottom: 15px;
     }
 }
