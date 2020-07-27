@@ -11,6 +11,12 @@ html {
     background-color: deepskyblue;
 }
 
+@media screen and (orientation: portrait){
+    .background{
+        background-color: white;
+    }
+}
+
 @keyframes a_top_tray_left{
     0% {opacity: 0; left: -10px;}
     100% {opacity: 1; left: 10px;}
@@ -32,7 +38,7 @@ html {
     z-index: 2;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 800px){
     @keyframes a_top_tray_left{
         0% {opacity: 0; left: -10px;}
         100% {opacity: 1; left: 50px;}
@@ -89,7 +95,7 @@ html {
     z-index: 2;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 800px){
     .tray_element{
         font-size: 50px;
     }
