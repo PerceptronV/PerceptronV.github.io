@@ -91,7 +91,7 @@ html {
 
 @media screen and (orientation: portrait){
     .tray_element{
-        font-size: 40px;
+        font-size: 50px;
         text-align: right;
         margin-left: 10px;
     }
