@@ -39,10 +39,10 @@ html {
     }
     
     .top_tray_left{
-        height: 100px;
-        width: 100px;
+        height: 130px;
+        width: 130px;
         top: 20px;
-        background-size: 100px 100px;
+        background-size: 130px 130px;
     }
 }
 
