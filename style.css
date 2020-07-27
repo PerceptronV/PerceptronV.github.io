@@ -35,13 +35,13 @@ html {
 @media screen and (orientation: portrait){
     @keyframes a_top_tray_left{
         0% {opacity: 0; left: -10px;}
-        100% {opacity: 1; left: 50px;}
+        100% {opacity: 1; left: 20px;}
     }
     
     .top_tray_left{
-        height: 160px;
-        width: 160px;
-        top: 50px;
+        height: 100px;
+        width: 100px;
+        top: 20px;
         background-size: 160px 160px;
     }
 }
@@ -50,7 +50,7 @@ html {
     position: fixed;
     right: 10px;
     height: 10px;
-    width: 100%;
+    width: 80%;
     
     animation-name: a_top_tray_right;
     animation-duration: 1s;
