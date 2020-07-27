@@ -32,6 +32,20 @@ html {
     z-index: 2;
 }
 
+@media screen and (max-width: 600px){
+    @keyframes a_top_tray_left{
+        0% {opacity: 0; left: -10px;}
+        100% {opacity: 1; left: 50px;}
+    }
+    
+    .top_tray_left{
+        height: 160px;
+        width: 160px;
+        top: 50px;
+        background-size: 160px 160px;
+    }
+}
+
 .top_tray_right{
     position: fixed;
     right: 10px;
@@ -75,6 +89,12 @@ html {
     z-index: 2;
 }
 
+@media screen and (max-width: 600px){
+    .tray_element{
+        font-size: 50px;
+    }
+}
+
 .tray_element:visited{
     color: white;
     text-decoration: none;
@@ -94,9 +114,41 @@ html {
     overflow-y: hidden;
 }
 
+@keyframes a_greeter{
+    0% {opacity: 0; top: 50%; transform: rotateX(-30deg);}
+    100% {opacity: 1; top: 40%; border-color: aquamarine; transform: rotateX(0deg);}
+}
+
+.greeter{
+    top: 50%;
+    left: 5%;
+    width: 90%;
+    height: auto;
+    position: absolute;
+    
+    border-style: solid;
+    border-color: aquamarine;
+    border-width: 5px;
+    border-radius: 5px;
+    margin: auto;
+    
+    user-select: none;
+    
+    color: cornflowerblue;
+    font-size: 200%;
+    text-align: center;
+    
+    animation-name: a_greeter;
+    animation-duration: 1.5s;
+    animation-delay: 1.2s;
+    animation-fill-mode: both;
+    z-index: 1;
+}
+
+
 @keyframes cross_waver{
     0% {transform: rotate(-30deg);}
-    50% {transform: rotate(-25deg);}
+    50% {transform: rotate(-20deg);}
     100% {transform: rotate(-30deg);}
 }
 
@@ -124,7 +176,7 @@ html {
 
 @keyframes half_circle_waver{
     0% {transform: rotate(40deg);}
-    50% {transform: rotate(15deg);}
+    50% {transform: rotate(10deg);}
     100% {transform: rotate(40deg);}
 }
 
@@ -153,7 +205,7 @@ html {
 
 @keyframes circle_waver{
     0% {transform: rotate(20deg);}
-    50% {transform: rotate(15deg);}
+    50% {transform: rotate(10deg);}
     100% {transform: rotate(20deg);}
 }
 
@@ -180,35 +232,6 @@ html {
 .circle:hover{
     transform: rotate(5deg);
     animation: none;
-}
-
-@keyframes a_greeter{
-    0% {opacity: 0; top: 50%; transform: rotateX(-30deg);}
-    100% {opacity: 1; top: 40%; border-color: aquamarine; transform: rotateX(0deg);}
-}
-
-.greeter{
-    top: 50%;
-    left: 5%;
-    width: 90%;
-    height: auto;
-    position: absolute;
-    
-    border-style: solid;
-    border-color: aquamarine;
-    border-width: 5px;
-    border-radius: 5px;
-    margin: auto;
-    
-    color: cornflowerblue;
-    font-size: 200%;
-    text-align: center;
-    
-    animation-name: a_greeter;
-    animation-duration: 1.5s;
-    animation-delay: 1.2s;
-    animation-fill-mode: both;
-    z-index: 1;
 }
 
 .license-holder{
