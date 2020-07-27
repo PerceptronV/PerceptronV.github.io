@@ -91,9 +91,8 @@ html {
 
 @media screen and (orientation: portrait){
     .tray_element{
-        font-size: 30px;
+        font-size: 40px;
         text-align: right;
-        color: aquamarine;
         margin-left: 10px;
     }
 }
@@ -146,6 +145,12 @@ html {
     animation-delay: 1.2s;
     animation-fill-mode: both;
     z-index: 1;
+}
+
+@media screen and (orientation: portrait){
+    .greeter{
+        font-size: 52px;
+    }
 }
 
 
@@ -217,7 +222,7 @@ html {
     text-align: center;
     color: aqua;
     width: 100px;
-    height: 301px;
+    height: 300px;
     transform: rotate(20deg);
     transition: transform 1s;
     position: absolute;
@@ -230,6 +235,28 @@ html {
     animation-duration: 4.5s;
     animation-delay: 1s;
     animation-iteration-count: infinite;
+}
+
+@media screen and (orientation: portrait){
+    .cross{
+        font-size: 140px;
+        width: 500px;
+    }
+}
+
+@media screen and (orientation: portrait){
+    .half_circle{
+        font-size: 160px;
+        width: 160px;
+    }
+}
+
+@media screen and (orientation: portrait){
+    .circle{
+        font-size: 160px;
+        width: 160px;
+        top: 20%;
+    }
 }
 
 .circle:hover{
@@ -259,4 +286,11 @@ html {
 .icon{
     width: 30px;
     height: 30px;
+}
+
+@media screen and (orientation: portrait){
+    .icon{
+        width: 65px;
+        height: 65px;
+    }
 }
