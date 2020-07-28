@@ -118,6 +118,7 @@ html {
     z-index: 1;
     overflow-x: hidden;
     overflow-y: hidden;
+    align-content: center;
 }
 
 @keyframes a_greeter{
@@ -127,7 +128,8 @@ html {
 
 .greeter{
     width: 90%;
-    position: sticky;
+    position: absolute;
+    left: 5%;
     
     border-style: solid;
     border-color: aquamarine;
@@ -138,7 +140,7 @@ html {
     user-select: none;
     
     color: cornflowerblue;
-    font-size: 200%;
+    font-size: 230%;
     text-align: center;
     
     animation-name: a_greeter;
@@ -154,7 +156,7 @@ html {
 
 @media screen and (orientation: portrait){
     .greeter{
-        font-size: 52px;
+        font-size: 65px;
     }
 }
 

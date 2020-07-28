@@ -10,14 +10,11 @@ window.addEventListener('scroll', function() {
     scroll = window.pageYOffset;
     h = window.innerHeight;
     
-    if (scroll>h/4)
-        $("#greeter").css("background-color", "yellow");
-    
     if ((scroll>h/bound)&&(scroll<h+100)){
-        $("#greeter").css('transform','translate(0px,'+((scroll*bound-h)*0.5)+'px)');
+        $("#greeter").css('transform','translate(0px,'+(scroll+(scroll*bound-h)*0.5)+'px)');
         $("#greeter").css('opacity',1-(scroll*bound-h)/(h/bound));
     } else if (scroll<h/bound) {
-        $("#greeter").css('transform','translate(0px, 0px)');
+        $("#greeter").css('transform','translate(0px, '+scroll+'px)');
         $("#greeter").css('opacity',1);
     } else{
         $("#greeter").css('opacity',1-(scroll*bound-h)/(h/bound));
