@@ -10,7 +10,7 @@ window.addEventListener('scroll', function() {
     scroll = window.pageYOffset;
     h = window.innerHeight;
     
-    if ((scroll>h/bound)&&(scroll<h+100)){
+    if ((scroll>h/bound)&&(scroll<h)){
         $("#greeter").css('transform','translate(0px,'+(scroll+(scroll*bound-h)*0.5)+'px)');
         $("#greeter").css('opacity',1-(scroll*bound-h)/(h/bound));
     } else if (scroll<h/bound) {
