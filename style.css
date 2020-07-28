@@ -8,7 +8,7 @@ html {
     padding: 0px;
     border: None;
     margin: 0px;
-    background-color: deepskyblue;
+    background-color: black;
 }
 
 @keyframes a_top_tray_left{
@@ -93,7 +93,7 @@ html {
     .tray_element{
         font-size: 50px;
         text-align: right;
-        margin-left: 10px;
+        margin-left: 30px;
     }
     .top_tray_right{
         top: 20px;
@@ -126,11 +126,8 @@ html {
 }
 
 .greeter{
-    top: 50%;
-    left: 5%;
     width: 90%;
-    height: auto;
-    position: absolute;
+    position: sticky;
     
     border-style: solid;
     border-color: aquamarine;
@@ -147,8 +144,12 @@ html {
     animation-name: a_greeter;
     animation-duration: 1.5s;
     animation-delay: 1.2s;
-    animation-fill-mode: both;
+    animation-fill-mode: backwards;
     z-index: 1;
+    
+    opacity: 1;
+    top: 40%;
+    border-color: aquamarine;
 }
 
 @media screen and (orientation: portrait){
@@ -170,7 +171,7 @@ html {
     width: 300px;
     transform: rotate(-30deg);
     transition: transform 1s;
-    position: absolute;
+    position: fixed;
     top: 55%;
     left: 15%;
     user-select: none;
@@ -199,9 +200,9 @@ html {
     width: 100px;
     transform: rotate(40deg);
     transition: transform 1s;
-    position: absolute;
+    position: fixed;
     top: 73%;
-    left: 70%;
+    right: 20%;
     user-select: none;
     
     animation-name: half_circle_waver;
@@ -229,9 +230,9 @@ html {
     height: 300px;
     transform: rotate(20deg);
     transition: transform 1s;
-    position: absolute;
+    position: fixed;
     top: 10%;
-    left: 65%;
+    right: 25%;
     user-select: none;
     border-radius: 200px;
     
@@ -282,6 +283,7 @@ html {
     padding-bottom: 5px;
     padding-top: 5px;
     color: darkgrey;
+    z-index: 2;
 }
 
 .icon-holder{
@@ -289,8 +291,8 @@ html {
     width: 100%;
     padding-top: 15px;
     padding-bottom: 8px;
-    z-index: 1;
     text-align: center;
+    z-index: 2;
 }
 
 .icon{
