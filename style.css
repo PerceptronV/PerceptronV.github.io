@@ -122,8 +122,8 @@ html {
 }
 
 @keyframes a_greeter{
-    0% {opacity: 0; top: 50%; transform: rotateX(-30deg);}
-    100% {opacity: 1; top: 40%; border-color: aquamarine; transform: rotateX(0deg);}
+    0% {opacity: 0; top: 45%; transform: rotateX(-30deg);}
+    100% {opacity: 1; top: 35%; border-color: aquamarine; transform: rotateX(0deg);}
 }
 
 .greeter{
@@ -150,13 +150,23 @@ html {
     z-index: 1;
     
     opacity: 1;
-    top: 40%;
+    top: 35%;
     border-color: aquamarine;
+}
+
+.tag{
+    font-size: 20px;
+    font-style: italic;
+    font-family: monospace;
+    color: white;
 }
 
 @media screen and (orientation: portrait){
     .greeter{
         font-size: 65px;
+    }
+    .tag{
+        font-size: 35px;
     }
 }
 
