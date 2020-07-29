@@ -27,7 +27,7 @@ html {
 }
 
 .top_tray_left{
-    background-image: url(HPVS.png);
+    background-image: url(static/HPVS.png);
     position: fixed;
     top: 10px;
     height: 40px;
