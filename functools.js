@@ -44,7 +44,7 @@ window.addEventListener('scroll', function() {
                 $("#half_circle").css('right',(20-(20+ofst)*p)+'%');
                 $("#circle").css('right',(25-(25+ofst)*p)+'%');
             } else{
-                $("#cross").css('left',(15-(15+10)*p)+'%');
+                $("#cross").css('left',(15-(15+12)*p)+'%');
                 $("#half_circle").css('right',(20-(20+ofst)*p)+'%');
                 $("#circle").css('right',(25-(25+ofst)*p)+'%');
             }
@@ -55,7 +55,7 @@ window.addEventListener('scroll', function() {
                 $("#half_circle").css('right','-'+ofst+'%');
                 $("#circle").css('right','-'+ofst+'%');
             } else{
-                $("#cross").css('left','-'+10+'%');
+                $("#cross").css('left','-'+12+'%');
                 $("#half_circle").css('right','-'+ofst+'%');
                 $("#circle").css('right','-'+ofst+'%');
             }
