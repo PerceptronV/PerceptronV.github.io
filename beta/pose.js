@@ -4,7 +4,6 @@ var canvas = document.querySelector("#canvas");
 var buff = document.querySelector("#buff");
 var c = canvas.getContext('2d');
 var num, increased, total, type, timer, check;
-var timer = setInterval(pred_pose, 100);
 
 const line = [null, null, null, null, null, 6, 12, 5, 6, 7, 8, 5, 11, 11, 12, 13, 14];
 //         = [0,    1,    2,    3,    4,    5, 6,  7, 8, 9, 10 11 12, 13, 14, 15, 16]
@@ -93,13 +92,12 @@ function draw(pose, context){
             }
 }
 
-if (navigator.mediaDevices.getUserMedia) {
-  navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+navigator.mediaDevices.getUserMedia({ video: true, audio: false })
     .then(function (stream) {
-      window.stream=stream;
-      video.srcObject = stream;
+        window.stream=stream;
+        video.srcObject = stream;
+        var timer = setInterval(pred_pose, 100);
     })
     .catch(function (err0r) {
       console.log("Camera blocked");
     });
-}
