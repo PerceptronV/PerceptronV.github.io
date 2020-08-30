@@ -1,5 +1,3 @@
-
-
 # Hiking
 
 _Lantau Trail Sec. 1-3_
@@ -10,21 +8,21 @@ _Lantau Trail Sec. 1-3_
 
 ## Navigator
 
-_**[Hiking](#Hiking)**_
+_**[Hiking](#hiking)**_
 
-​		**[Navigator](#Navigator)**
+​		**[Navigator](#navigator)**
 
-​		**[Schedule](#Schedule)**
+​		**[Schedule](#schedule)**
 
-​		**[Transport](#Transport)**
+​		**[Transport](#transport)**
 
-​				[Central to Mui Wo](#Central-to-Mui-Wo)
+​				[Central to Mui Wo](#central-to-mui-wo)
 
-​				[Ngong Ping to Tung Chong](#Ngong-Ping-to-Tung-Chong)
+​				[Ngong Ping to Tung Chong](#ngong-ping-to-tung-chong)
 
-​				[Tsim Sha Tsui to Central](#Tsim-Sha-Tsui-to-Central)
+​				[Tsim Sha Tsui to Central](#tsim-sha-tsui-to-central)
 
-​		**[Packing Checklist](#Packing-Checklist)**
+​		**[Packing Checklist](#packing-checklist)**
 
 <br/>
 
@@ -34,19 +32,19 @@ _**[Hiking](#Hiking)**_
 | :----------------------------------------------------------: | :------------: | :----------------------------------------------------------: |
 |                         _Departure_                          |     06:45      |                                                              |
 | [Central Ferry Pier No.6](https://www.google.com/maps?q=Central+Ferry+Pier+No.6,+Central,+Hong+Kong) (_Meetup_) |     07:30      |                                                              |
-|                      _Ferry Departure_                       |     07:40      |      [Central to Mui Wo timetable](#Central-to-Mui-Wo)       |
+|                      _Ferry Departure_                       |     07:40      |      [Central to Mui Wo timetable](#central-to-mui-wo)       |
 |                      Mui Wo Ferry Pier                       |     08:30      |                                                              |
 |            Old Village Path to Nam Shan Entrance             |     08:55      | [Directions](https://www.google.com.hk/maps/dir/Mui+Wo+Ferry+Pier/%E5%B6%BC%E5%8D%97%E9%81%93+Old+Village+Path+to+Nam+Shan/@22.2639662,113.9902773,16.8z/data=!4m14!4m13!1m5!1m1!1s0x3401562b25b6213b:0xf1d2187ff9578048!2m2!1d114.0022296!2d22.2651105!1m5!1m1!1s0x340157d0a3ac6c5d:0xf427a770dbe24d3d!2m2!1d113.989862!2d22.26338!3e2?hl=en&authuser=0) |
 |                           Nam Shan                           |     09:30      |                                                              |
 |                         _Breakfast_                          |     10:00      |                                                              |
 |                伯公坳 (_Lantau Trail Sec. 2_)                |     14:30      | 6.5km, 3hr <br/>**+ 30min _lunch_** <br/> **+ 1hr backup** <br/>[More information](https://www.hiking.gov.hk/trail/info/id/SVdvZDdnTENQZXl0byt5QndsQ0NmZz09) |
 |                 昂坪 (_Lantau Trail Sec. 3_)                 |     18:30      | 4.5km, 3hr <br/> **+ 1hr backup** <br/>[More information](https://www.hiking.gov.hk/trail/info/id/NWJYSHpGd0d5NmZNdXdtQmM4UTBRdz09) |
-|                     _Last bus departure_                     |     19:10      | [Ngong Ping to Tung Chong bus table](#Ngong-Ping-to-Tung-Chong) |
+|                     _Last bus departure_                     |     19:10      | [Ngong Ping to Tung Chong bus table](#ngong-ping-to-tung-chong) |
 |                             東涌                             |     20:00      |                                                              |
 
 <br/>
 
-[Return to Navigator](#Navigator)
+[Return to Navigator](#navigator)
 
 <br/>
 
@@ -86,7 +84,7 @@ _**[Hiking](#Hiking)**_
 
 <br/>
 
-[Return to Navigator](#Navigator)
+[Return to Navigator](#navigator)
 
 <br/>
 
@@ -113,7 +111,7 @@ _**[Hiking](#Hiking)**_
 
 <br/>
 
-[Return to Navigator](#Navigator)
+[Return to Navigator](#navigator)
 
 <br/>
 
@@ -137,7 +135,7 @@ Trip duration: ~10min
 
 <br/>
 
-[Return to Navigator](#Navigator)
+[Return to Navigator](#navigator)
 
 <br/>
 
@@ -153,19 +151,19 @@ Food
 
 Drinks
 
-- [ ] Bottle of water X 2
+- [x] Bottle of water X 2
 - [ ] Juice
 - [ ] Soda & slice lime
 - [ ] Milk
 
 Others
 
-- [ ] Salt
+- [x] Salt
 - [ ] Frozen bag
-- [ ] Jacket
-- [ ] Knee sleeve
-- [ ] Charged Octopus
+- [x] Jacket
+- [x] Knee sleeve
+- [x] Charged Octopus
 
 <br/>
 
-[Return to Navigator](#Navigator)
+[Return to Navigator](#navigator)
