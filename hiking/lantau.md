@@ -6,13 +6,30 @@ _Lantau Trail Sec. 1-3_
 
 ![Sunset on Lantau Trail](https://www.localiiz.com/uploads/_1200x630_crop_top-center_80_none/hiking-guide-tai-long-wan-sunset-peak-lantau-island.jpg "Sunset on Lantau Trail")
 
+<br/>
 
+## Navigator
+
+_**[Hiking](#Hiking)**_
+
+​		**[Navigator](#Navigator)**
+
+​		**[Schedule](#Schedule)**
+
+​		**[Transport](#Transport)**
+
+​				[Central to Mui Wo](#Central-to-Mui-Wo)
+
+​				[Ngong Ping to Tung Chong](#Ngong-Ping-to-Tung-Chong)
+
+​		**[Packing Checklist](#Packing-Checklist)**
+
+<br/>
 
 ## Schedule
 
 |                       Location / Event                       | Finishing Time |                           Remarks                            |
 | :----------------------------------------------------------: | :------------: | :----------------------------------------------------------: |
-|                         _Departure_                          |     06:45      |                                                              |
 | [Central Ferry Pier No.6](https://www.google.com/maps?q=Central+Ferry+Pier+No.6,+Central,+Hong+Kong) (_Meetup_) |     07:30      |                                                              |
 |                      _Ferry Departure_                       |     07:40      |      [Central to Mui Wo timetable](#Central-to-Mui-Wo)       |
 |                      Mui Wo Ferry Pier                       |     08:30      |                                                              |
@@ -24,7 +41,11 @@ _Lantau Trail Sec. 1-3_
 |                     _Last bus departure_                     |     19:10      | [Ngong Ping to Tung Chong bus table](#Ngong-Ping-to-Tung-Chong) |
 |                             東涌                             |     20:00      |                                                              |
 
+<br/>
 
+[Return to Navigator](#Navigator)
+
+<br/>
 
 ## Transport
 
@@ -51,7 +72,7 @@ _Lantau Trail Sec. 1-3_
 
 \> 於中環5號碼頭泊岸
 
-
+<br/>
 
 航行時間: 約35 - 40分鐘 (高速船)，約50 - 55分鐘 (普通渡輪)
 
@@ -60,7 +81,7 @@ _Lantau Trail Sec. 1-3_
 |   Mondays to Saturdays    |  $14.60  | $24.10 |
 | Sundays & Public Holidays |  $21.60  | $35.30 |
 
-
+<br/>
 
 ### Ngong Ping to Tung Chong
 
@@ -83,50 +104,24 @@ _Lantau Trail Sec. 1-3_
 
 平日車資: $17.2,  假日車資: $27.0
 
+<br/>
 
+[Return to Navigator](#Navigator)
 
-### Tsim Sha Tsui to Central (backup)
+<br/>
 
-[Star Ferry Services](http://www.starferry.com.hk/en/service)
-
-|    **Departure from Tsim Sha Tsui**    |                      |
-| :------------------------------------: | :------------------: |
-|                **Time**                | **Frequency (mins)** |
-| **Mon – Fri (Except Public Holidays)** |                      |
-|              06:30-07:15               |        10-12         |
-|              07:15-09:45               |          6           |
-
-Trip duration: ~10min
-
-| Mon - Fri (Except Public Holidays) | Mon - Fri (Except Public Holidays) | **Sat, Sun & Public Holidays** | **Sat, Sun & Public Holidays** |
-| :--------------------------------: | :--------------------------------: | ------------------------------ | ------------------------------ |
-|           **Upper Deck**           |           **Lower Deck**           | **Upper Deck**                 | **Lower Deck**                 |
-|                $2.7                |                $2.2                | $3.7                           | $3.1                           |
-
-
-
-## Checklist
+## Packing Checklist
 
 Food
 
 - [ ] Packed Breakfast
 - [ ] Packed Lunch
 - [ ] Packed Dinner
-- [ ] Snacks
-- [ ] Cucumber & Cherry
 
-Drinks
+- [ ] Bottle of water X 3
 
-- [ ] Bottle of water X 2
-- [ ] Juice
-- [ ] Soda & slice lime
-- [ ] Milk
-
-Others
-
-- [ ] Salt
-- [ ] Frozen bag
-- [ ] Jacket
 - [ ] Knee sleeve
-- [ ] Charged Octopus
 
+<br/>
+
+[Return to Navigator](#Navigator)
