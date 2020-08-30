@@ -6,27 +6,7 @@ _Lantau Trail Sec. 1-3_
 
 ![Sunset on Lantau Trail](https://www.localiiz.com/uploads/_1200x630_crop_top-center_80_none/hiking-guide-tai-long-wan-sunset-peak-lantau-island.jpg "Sunset on Lantau Trail")
 
-<br/>
 
-## Navigator
-
-_**[Hiking](#Hiking)**_
-
-​		**[Navigator](#Navigator)**
-
-​		**[Schedule](#Schedule)**
-
-​		**[Transport](#Transport)**
-
-​				[Central to Mui Wo](#Central-to-Mui-Wo)
-
-​				[Ngong Ping to Tung Chong](#Ngong-Ping-to-Tung-Chong)
-
-​				[Tsim Sha Tsui to Central](#Tsim-Sha-Tsui-to-Central)
-
-​		**[Packing Checklist](#Packing-Checklist)**
-
-<br/>
 
 ## Schedule
 
@@ -44,11 +24,7 @@ _**[Hiking](#Hiking)**_
 |                     _Last bus departure_                     |     19:10      | [Ngong Ping to Tung Chong bus table](#Ngong-Ping-to-Tung-Chong) |
 |                             東涌                             |     20:00      |                                                              |
 
-<br/>
 
-[Return to Navigator](#Navigator)
-
-<br/>
 
 ## Transport
 
@@ -75,7 +51,7 @@ _**[Hiking](#Hiking)**_
 
 \> 於中環5號碼頭泊岸
 
-<br/>
+
 
 航行時間: 約35 - 40分鐘 (高速船)，約50 - 55分鐘 (普通渡輪)
 
@@ -84,11 +60,7 @@ _**[Hiking](#Hiking)**_
 |   Mondays to Saturdays    |  $14.60  | $24.10 |
 | Sundays & Public Holidays |  $21.60  | $35.30 |
 
-<br/>
 
-[Return to Navigator](#Navigator)
-
-<br/>
 
 ### Ngong Ping to Tung Chong
 
@@ -111,11 +83,7 @@ _**[Hiking](#Hiking)**_
 
 平日車資: $17.2,  假日車資: $27.0
 
-<br/>
 
-[Return to Navigator](#Navigator)
-
-<br/>
 
 ### Tsim Sha Tsui to Central (backup)
 
@@ -135,13 +103,9 @@ Trip duration: ~10min
 |           **Upper Deck**           |           **Lower Deck**           | **Upper Deck**                 | **Lower Deck**                 |
 |                $2.7                |                $2.2                | $3.7                           | $3.1                           |
 
-<br/>
 
-[Return to Navigator](#Navigator)
 
-<br/>
-
-## Packing Checklist
+## Checklist
 
 Food
 
@@ -166,6 +130,3 @@ Others
 - [ ] Knee sleeve
 - [ ] Charged Octopus
 
-<br/>
-
-[Return to Navigator](#Navigator)
