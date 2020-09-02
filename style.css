@@ -59,8 +59,8 @@ html {
 
 @media screen and (orientation: portrait){
     @keyframes a_home_icon{
-        0% {opacity: 0; left: -10px;}
-        100% {opacity: 1; left: 20px;}
+        0% {opacity: 0; transform: rotate(-45deg);}
+        100% {opacity: 1; transform: rotate(0deg);}
     }
     
     .home_icon{
@@ -69,10 +69,6 @@ html {
         top: 20px;
         left: 20px;
         background-size: 130px 130px;
-    }
-    
-    .home_icon:hover{
-        transform: rotate(-45deg);
     }
 
     .home_icon:hover + .top_tray_left{
@@ -112,10 +108,21 @@ html {
 }
 
 @media screen and (orientation: portrait){
+    
+    @keyframes a_top_tray_left{
+        0% {opacity: 1;}
+        100% {opacity: 0;}
+    }
+    
     .top_tray_left{
         top: 120px;
         left: 30px;
+        animation-name: a_top_tray_left;
+        animation-duration: 1s;
+        animation-delay: 0.5s;
+        animation-fill-mode: none;
     }
+    
     .tray_element_left{
         font-size: 50px;
         background-color: rgba(0, 0, 0, 0.5);

@@ -6,6 +6,8 @@ var ofst = 3;
 var scroll = window.pageYOffset;
 var h = window.innerHeight;
 var w = window.innerWidth;
+var clicked = false;
+var double_clicked = false;
 
 function get_orientation(){
     h = window.innerHeight;
@@ -19,12 +21,43 @@ function get_orientation(){
 function home(){
     if (get_orientation() == 'landscape'){
         window.location.href = '';
+    } else {
+        if (clicked)
+            double_clicked = true;
+        setTimeout(function(){
+            if (clicked == false && double_clicked == false){
+                $("#home_icon").css("transform",'rotate(-45deg)');
+                $("#top_tray_left").css("opacity",'1');
+                $("#top_tray_left").css("pointer-events",'all');
+                clicked = true;
+            } else if (double_clicked == true){
+                double_clicked = false;
+            }
+        }, 20);
     }
 }
+
+window.addEventListener('click', function() {
+    setTimeout(function(){
+        if (get_orientation() == 'portrait' && clicked){
+            $("#home_icon").css("transform",'rotate(0deg)');
+            $("#top_tray_left").css("opacity",'0');
+            $("#top_tray_left").css("pointer-events",'none');
+            clicked = false;
+        }
+    }, 5)
+})
 
 window.addEventListener('scroll', function() {
     scroll = window.pageYOffset;
     h = window.innerHeight;
+    
+    if (get_orientation() == 'portrait'){
+        $("#home_icon").css("transform",'rotate(0deg)');
+        $("#top_tray_left").css("opacity",'0');
+        $("#top_tray_left").css("pointer-events",'none');
+        clicked = false;
+    }
     
     if ((scroll>h/bound)&&(scroll<h)){
         $("#greeter").css('transform','translate(0px,'+(scroll+(scroll*bound-h)*0.5)+'px)');
