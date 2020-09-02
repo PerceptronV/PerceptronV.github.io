@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <link rel="icon" href="../static/HPVS.png">
+        <title>Vincent Song: Home</title>
+        
+        <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/remarkable/1.7.1/remarkable.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body class="background parallax_still" id="body">
+        <button class="home_icon" onclick='home()' id='home_icon'></button>
+        <div class='top_tray_left' id='top_tray_left'>
+            <a href="../index.html" class="tray_element_left">Home</a><br/><br/>
+            <a href="" class="tray_element_left">CV & Achievements</a><br/><br/>
+            <a href="../projects/index.html" class="tray_element_left">Projects</a><br/><br/>
+            <a href="../index.html#contact-me" class="tray_element_left">Contact Me</a>
+        </div>
+        <div class="top_tray_right">
+            <a href="../index.html#contact-me" class="tray_element">Contact Me</a>
+            <a href="../projects/index.html" class="tray_element">Projects</a>
+            <a href="" class="tray_element">CV & Achievements</a>
+        </div>
+        <div class="greeter_holder parallax_still" id="greeter_holder">
+            <div class="cross" id="cross">△</div>
+            <div class="half_circle" id="half_circle">◑</div>
+            <div class="circle" id="circle">○</div>
+            <section class="greeter" id='greeter'>
+                <p>$$\int_{Heaney}^{GAN} ❤(x) dx = me$$</p>
+                <p class='tag'>Love with respect</p>
+            </section>
+        </div>
+        <div id='md-holder' class='text'></div>
+        <script src="render.js"></script>
+    </body>
+</html>
