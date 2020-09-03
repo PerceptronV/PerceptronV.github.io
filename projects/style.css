@@ -413,7 +413,9 @@ h3{
 .text{
     font-size: 18px;
     font-family: text_font;
+    color: black;
 }
+
 
 @media screen and (orientation: portrait){
     h1{
