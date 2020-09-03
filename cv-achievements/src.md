@@ -30,6 +30,8 @@
 [Beamline for Schools competition](https://beamlineforschools.cern)
 
 > Organizing Authority: <a href='https://home.cern/'>CERN</a>
+>
+> Note: This competition is guided by a professor at my school who previously worked at CERN. I am honoured to be the youngest member in the team.
 
 <br/>
 
@@ -43,13 +45,13 @@
 
 [ 05/2020 ]: 		Shell Science Lecture - <a style='color: gold'>_Winner_</a> -
 
-> Note: This is another competition organised by my school, in which everyone in my year group have to present a small lecture on an interesting scientific idea. I won first place with my lecture on the nature of time under the framework of Special Relativity.
+> This is another competition organised by my school, in which everyone in my year group have to present a small lecture on an interesting scientific idea. I won first place with my lecture on the nature of time under the framework of Special Relativity.
 
 <br/>
 
 [ 02/2020 ]: 		Shell Project - <a style='color: gold'>_Winner_</a> -
 
-> Note: This is a competition organised by my school, where each new student has to propose and carry out a project of their interest. I developed a system to help isolated elderly, and was awarded the title of 'winning project'. ( Refer to: [My Projects](projects/index.html) )
+> This is a competition organised by my school, where each new student has to propose and carry out a project of their interest. I developed a system to help isolated elderly, and was awarded the title of 'winning project'. ( Refer to: [My Projects](projects/index.html) )
 
 <br/>
 
