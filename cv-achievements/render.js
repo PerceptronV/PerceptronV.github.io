@@ -21,7 +21,8 @@ var md = new Remarkable();
 
 md.set({
     html: true,
-    typographer: true
+    typographer: true,
+    breaks: true
 })
 
 content = loadFile('src.md');
