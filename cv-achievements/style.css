@@ -8,6 +8,21 @@
   src: url(../static/Montserrat-Regular.ttf);
 }
 
+@font-face{
+    font-family: roboto;
+    src: url(../static/Roboto-Regular.ttf);
+}
+
+@font-face{
+    font-family: text_font;
+    src: url(static/text_font.ttf);
+}
+
+a{
+    color: cornflowerblue;
+    text-decoration: none;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -397,7 +412,7 @@ h3{
 
 .text{
     font-size: 18px;
-    font-family: monospace;
+    font-family: text_font;
     color: white;
 }
 
