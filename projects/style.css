@@ -18,7 +18,7 @@ html {
     padding: 0px;
     border: None;
     margin: 0px;
-    background-image: linear-gradient(30deg, darkcyan, chartreuse);
+    background-image: linear-gradient(30deg, blueviolet, darkblue);
 }
 
 @keyframes a_home_icon{
@@ -163,7 +163,7 @@ html {
     border-radius: 5px;
     background-color: None;
     font-family: sans-serif;
-    color: black;
+    color: white;
     position: relative;
     padding: 7px;
     margin-left: 5px;
@@ -193,7 +193,7 @@ html {
 }
 
 .tray_element:visited{
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
@@ -223,14 +223,14 @@ html {
     left: 5%;
     
     border-style: solid;
-    border-color: lightgoldenrodyellow;
+    border-color: darkkhaki;
     border-width: 5px;
     border-radius: 5px;
     margin: auto;
     
     user-select: none;
     
-    color: white;
+    color: yellow;
     font-size: 230%;
     text-align: center;
     
@@ -248,7 +248,7 @@ html {
     font-size: 20px;
     font-style: italic;
     font-family: monospace;
-    color: darkmagenta;
+    color: skyblue;
 }
 
 @media screen and (orientation: portrait){
@@ -269,7 +269,7 @@ html {
 
 .cross{
     font-size: 115px;
-    color: chocolate;
+    color: chartreuse;
     width: 300px;
     transform: rotate(-30deg);
     transition: transform 1s;
@@ -298,7 +298,7 @@ html {
 .half_circle{
     font-size: 100px;
     text-align: right;
-    color: chocolate;
+    color: chartreuse;
     width: 100px;
     transform: rotate(40deg);
     transition: transform 1s;
@@ -327,7 +327,7 @@ html {
 .circle{
     font-size: 100px;
     text-align: center;
-    color: chocolate;
+    color: chartreuse;
     width: 100px;
     height: 300px;
     transform: rotate(20deg);
@@ -379,13 +379,13 @@ html {
 
 h1{
     text-align: center;
-    color: chartreuse;
+    color: blue;
     font-size: 30px;
     font-family: comfortaa;
 }
 
 h2{
-    color: aqua;
+    color: blueviolet;
     font-size: 25px;
     font-family: comfortaa;
     text-align: center;
@@ -398,7 +398,6 @@ h3{
 .text{
     font-size: 18px;
     font-family: monospace;
-    color: white;
 }
 
 @media screen and (orientation: portrait){
@@ -420,7 +419,7 @@ h3{
     width: 90%;
     margin: auto;
     font-size: 18px;
-    background-color: darkslategrey;
+    background-color: ghostwhite;
     margin-bottom: 50px;
     padding: 40px;
 }
