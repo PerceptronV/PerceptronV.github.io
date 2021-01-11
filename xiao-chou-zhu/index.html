@@ -1,0 +1,347 @@
+<html>
+    <style>
+        .stybut{
+            color: white;
+            height: 40px;
+            width: 200px;
+            text-align: center;
+            background-color: darkseagreen;
+            border: None;
+            transition: background-color 1s;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+        .stybut:hover{
+            border: blue;
+            background-color: darkolivegreen;
+            cursor: pointer;
+        }
+        
+        .newbut{
+            width: 100px;
+            background-color: dodgerblue;
+            transition: background-color 0.5s width 0.5s;
+        }
+        
+        .newbut:hover{
+            background-color: cadetblue;
+        }
+        
+        table {
+            padding: 10px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td{
+            border: 2px solid white;
+            text-align: center;
+            padding: 8px;
+            color: black;
+        }
+        
+        th {
+            border: 2px solid white;
+            text-align: center;
+            padding: 8px;
+            color: black;
+            background-color: beige;
+        }
+        
+        tr:nth-child(odd) {
+            background-color: aliceblue;
+        }
+        
+        tr:nth-child(even) {
+            background-color: white;
+        }
+        
+        #loader {
+          position: absolute;
+          display: block;
+          z-index: 3;
+          left: 50%;
+          top: 50%;
+          width: 150px;
+          height: 150px;
+          margin: -75px 0 0 -75px;
+          border: 16px solid beige;
+          border-radius: 50%;
+          border-top: 16px solid darkgrey;
+          width: 120px;
+          height: 120px;
+          -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+        }
+
+        @-webkit-keyframes spin {
+          0% { -webkit-transform: rotate(0deg); }
+          100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        
+        #login{
+            position: fixed;
+            display: block;
+            z-index: 1;
+            width: 50%;
+            height: 90%;
+            text-align: center;
+            top: 5%;
+            left: 25%;
+            right: 25%;
+            bottom: 5%;
+            background-color: white;
+            cursor: auto; 
+            border-radius: 25px;
+        }
+        #dashboard{
+            position: fixed;
+            display: none;
+            z-index: 2;
+            width: 100%; 
+            height: 100%; 
+            text-align: center;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            cursor: auto; 
+        }
+        #new_val{
+            position: fixed;
+            display: none;
+            z-index: 1;
+            width: 50%;
+            height: 90%;
+            text-align: center;
+            top: 5%;
+            left: 25%;
+            right: 25%;
+            bottom: 5%;
+            background-color: lavender;
+            cursor: auto; 
+            border-radius: 25px;
+        }
+        .stytxt{
+            color: black;
+            font-size: 20px;
+            text-align: left;
+        }
+    </style>
+    
+    <head>
+        <link rel="icon" href="icon.png">
+        <title>小臭豬</title>
+    </head>
+    <body style='background-color: blanchedalmond;'>
+        
+        <div id="loader"></div>
+        
+        
+        <div id='login'>
+            <img src="icon.png" alt="Icon" height=50% style='border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;'>
+            <p style='font-size: 30px;'>歡迎使用小臭豬！</p>
+            <div style="padding-bottom: 3%;"><a class='stytxt'>用戶名: </a><input type="normal" id="usn" class='stytxt' placeholder="請輸入"></div>
+            <div style="padding-bottom: 3%;"><a class='stytxt'>密碼: </a><input type="password" id="pswd" class='stytxt' placeholder="請輸入"></div> 
+            <button onclick="sign_in()" id="sign_in_button" class='stybut' style='align-self: center;'>
+                登錄
+            </button>
+        </div>
+        
+        
+        <div id="dashboard">
+            <div id='toolbar' style="position: fixed; left: 80%; width: 20%;">
+                <button onclick="show_entry()" id="sign_in_button" class='stybut newbut' style="margin-top: 10px; width: 50%;">
+                    新增記錄
+                </button>
+                <button onclick="sign_out()" id="sign_in_button" class='stybut' style='width: 30%; margin-left: 15px; margin-top: 10px;'>
+                    登出
+                </button>
+            </div>
+            
+            <div style="padding: 1%;"><a style='font-size: 30px; color: darkslategray; align-self: center;'>歡迎來到小臭豬主頁！</a></div>
+            <div style="padding: 1%;">
+                <table id='table'>
+                    <tr>
+                        <th>時間</th>
+                        <th>高壓</th>
+                        <th>低壓</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div id='new_val'>
+            <img src="icon.png" alt="Icon" height=50% style='border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;'>
+            <p style='font-size: 30px;'>小臭豬新增血壓！</p>
+            <div style="padding-bottom: 3%;"><a class='stytxt'>高壓: </a><input type="number" id="systole" class='stytxt' placeholder="請輸入"></div>
+            <div style="padding-bottom: 3%;"><a class='stytxt'>低壓: </a><input type="number" id="diastole" class='stytxt' placeholder="請輸入"></div> 
+            <button onclick="exit_entry()" id="exit_button" class='stybut' style='align-self: center; margin-right: 15px;'>
+                退出
+            </button>
+            <button onclick="new_entry()" id="new_entry_button" class='stybut' style='align-self: center; margin-left: 15px;'>
+                新增
+            </button>
+        </div>
+        
+        
+        
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
+        <script>
+          // Your web app's Firebase configuration
+          var firebaseConfig = {
+            apiKey: "AIzaSyDunxM_CsmBvE-qml3GHsCYKGT774lHhpE",
+            authDomain: "xiao-chou-zhu.firebaseapp.com",
+            databaseURL: "https://xiao-chou-zhu.firebaseio.com",
+            projectId: "xiao-chou-zhu",
+            storageBucket: "xiao-chou-zhu.appspot.com",
+            messagingSenderId: "826168077131",
+            appId: "1:826168077131:web:f2a644c2ef916b47dc96ce"
+          };
+        </script>
+        <script>
+            // Get a reference to the database service
+            function show_entry(){
+                document.getElementById("new_val").style.display = "block";
+                document.getElementById("dashboard").style.display = "none";
+            }
+            
+            function exit_entry(){
+                document.getElementById("new_val").style.display = "none";
+                document.getElementById("dashboard").style.display = "block";
+            }
+            
+            function new_entry(){
+                var database = firebase.database();
+                var d = new Date();
+                var utc = d.toUTCString();
+                var lct = d.toLocaleString();;
+                var systole=document.getElementById('systole').value;
+                var diastole=document.getElementById('diastole').value;
+                document.getElementById('systole').value="";
+                document.getElementById('diastole').value="";
+                if (systole!="" && diastole!=""){
+                    var updata={}
+                    updata[utc]={
+                            time: lct,
+                            systole: systole,
+                            diastole: diastole
+                    }
+                    var ref = database.ref('user_data/'+uid+'/pressure_data').update(updata);
+                    document.getElementById("new_val").style.display = "none";
+                    document.getElementById("dashboard").style.display = "block";
+                }
+            }
+            
+            function initialize(user){
+                name = user.displayName;
+                email = user.email;
+                photoUrl = user.photoURL;
+                emailVerified = user.emailVerified;
+                uid = user.uid;
+                update();
+                var timer = setInterval(update,3000);
+            }
+            
+            function update(){
+                var ref=firebase.database().ref('user_data/'+uid+"/pressure_data").once("value");
+                ref.then(function(snap){
+                    var table=document.getElementById('table');
+                    while (table.rows.length > 1){
+                        table.deleteRow(1);
+                    }
+                    if (snap.val()==null){
+                        var row=table.insertRow(-1);
+                        var cell1=row.insertCell(0);
+                        var cell2=row.insertCell(1);
+                        var cell3=row.insertCell(2);
+                        cell1.innerHTML="沒有資料";
+                        cell2.innerHTML="沒有資料";
+                        cell3.innerHTML="沒有資料";
+                    }
+                    else{
+                        snap.forEach(function(child){
+                            var row=table.insertRow(1);
+                            var cell1=row.insertCell(0);
+                            var cell2=row.insertCell(1);
+                            var cell3=row.insertCell(2);
+                            cell1.innerHTML=child.child('time').val();
+                            cell2.innerHTML=child.child('systole').val();
+                            cell3.innerHTML=child.child('diastole').val();
+                        })
+                    }
+                });
+            }
+            
+            function sign_in(){
+                document.getElementById("loader").style.display = "block";
+                var error=false;
+                var email = document.getElementById('usn').value;
+                var password = document.getElementById('pswd').value;
+                firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+                    error=true;
+                });
+                document.getElementById('usn').value="";
+                document.getElementById('pswd').value="";
+                var email = "";
+                var password = "";
+                document.getElementById("loader").style.display = "none";
+            }
+            
+            function sign_out(){
+                document.getElementById("loader").style.display = "block";
+                firebase.auth().signOut().then(function() {
+                    clearInterval(timer);
+                    document.getElementById("dashboard").style.display = "none";
+                    document.getElementById("login").style.display = "block";
+                    document.getElementById("loader").style.display = "none";
+                }).catch(function(error) {
+                    document.getElementById("loader").style.display = "none";
+                });
+            }
+        </script>
+        <script>
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            document.getElementById("pswd").addEventListener("keydown", function(event){
+                if (event.keyCode==13){
+                    event.preventDefault;
+                    document.getElementById("sign_in_button").click();
+                }
+            })
+            var user = firebase.auth().currentUser;
+            var name, email, photoUrl, uid, emailVerified;
+            if (user) {
+                document.getElementById("login").style.display = "none";
+                document.getElementById("dashboard").style.display = "block";
+                initialize(user);
+                document.getElementById("loader").style.display = "none";
+            } else {
+                document.getElementById("dashboard").style.display = "none";
+                document.getElementById("login").style.display = "block";
+                document.getElementById("loader").style.display = "none";
+            }
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    document.getElementById("login").style.display = "none";
+                    document.getElementById("dashboard").style.display = "block";
+                    initialize(user);
+                } else {
+                    document.getElementById("dashboard").style.display = "none";
+                    document.getElementById("login").style.display = "block";
+                }
+            });
+        </script>
+    </body>
+</html>

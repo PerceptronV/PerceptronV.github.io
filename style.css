@@ -1,0 +1,473 @@
+@font-face {
+  font-family: comfortaa;
+  src: url(static/Comfortaa-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: montserrat;
+  src: url(static/Montserrat-Regular.ttf);
+}
+
+@font-face{
+    font-family: roboto;
+    src: url(static/Roboto-Regular.ttf);
+}
+
+@font-face{
+    font-family: text_font;
+    src: url(static/text_font.ttf);
+}
+
+a{
+    color: cornflowerblue;
+    text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.background{
+    align-content: center;
+    border-radius: 100%;
+    height: 100%;
+    padding: 0px;
+    border: None;
+    margin: 0px;
+    background-color: black;
+    height: 100%;
+    width: 100%;
+}
+
+@keyframes a_home_icon{
+    0% {opacity: 0; left: -10px;}
+    100% {opacity: 1; left: 10px;}
+}
+
+.home_icon{
+    background-image: url(static/HPVS.png);
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    background-size: 45px 45px;
+    background-repeat: no-repeat;
+    border: none;
+    
+    transition: transform 1s;
+    
+    animation-name: a_home_icon;
+    animation-duration: 1s;
+    animation-delay: 0.5s;
+    animation-fill-mode: backwards;
+    
+    z-index: 3;
+}
+.home_icon:focus{
+    border: none;
+    outline: none;
+}
+
+.home_icon:hover{
+    cursor: pointer;
+    transform: scale(1.1,1.1);
+}
+
+@media screen and (orientation: portrait){
+    @keyframes a_home_icon{
+        0% {opacity: 0; transform: rotate(-45deg);}
+        100% {opacity: 1; transform: rotate(0deg);}
+    }
+    
+    .home_icon{
+        width: 13vw;
+        height: 13vw;
+        top: 2vw;
+        left: 2vw;
+        background-size: 13vw 13vw;
+    }
+
+    .home_icon:hover + .top_tray_left{
+        opacity: 1;
+        pointer-events: all;
+    }
+}
+
+.top_tray_left{
+    padding-top: 65px;
+    text-align: left;
+    margin-left: 10px;
+    opacity: 0;
+    pointer-events: none;
+    
+    transition: opacity 1s;
+    
+    position: fixed;
+    z-index: 2;
+}
+
+.top_tray_left:hover{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.tray_element_left{
+    border-radius: 5px;
+    padding: 7px;
+    background-color: none;
+    font-family: sans-serif;
+    position: relative;
+    
+    font-size: 17px;
+    text-decoration: none;
+}
+
+@media screen and (orientation: portrait){
+    
+    @keyframes a_top_tray_left{
+        0% {opacity: 1;}
+        100% {opacity: 0;}
+    }
+    
+    .top_tray_left{
+        top: 4vh;
+        left: 5vw;
+        animation-name: a_top_tray_left;
+        animation-duration: 1s;
+        animation-delay: 0.5s;
+        animation-fill-mode: none;
+    }
+    
+    .tray_element_left{
+        font-size: 4vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 5px;
+        border-radius: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+.top_tray_right{
+    position: fixed;
+    right: 10px;
+    height: 10px;
+    width: 80%;
+    
+    animation-name: a_top_tray_right;
+    animation-duration: 1s;
+    animation-delay: 0.5s;
+    animation-fill-mode: both;
+    z-index: 2;
+    
+    user-select: none;
+}
+
+@keyframes a_top_tray_right{
+    0% {opacity: 0; top: 0px;}
+    100% {opacity: 1; top: 10px;}
+}
+
+@keyframes a_tray_element{
+    0% {transform: rotate(20deg);}
+    100% {transform: rotate(0deg);}
+}
+
+.tray_element{
+    float: right;
+    border-radius: 5px;
+    background-color: None;
+    font-family: sans-serif;
+    position: relative;
+    padding: 7px;
+    margin-left: 5px;
+    font-size: 17px;
+    display: block;
+    
+    animation-name: a_tray_element;
+    animation-duration: 1s;
+    animation-delay: 0.5s;
+    animation-fill-mode: both;
+    
+    text-decoration: none;
+    z-index: 2;
+}
+
+@media screen and (orientation: portrait){
+    .tray_element{
+        font-size: 50px;
+        text-align: right;
+        margin-left: 30px;
+    }
+    .top_tray_right{
+        top: 20px;
+        right: 20px;
+        display: none;
+    }
+}
+
+.parallax_still{
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.greeter_holder{
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(30deg, darkslategrey, black);
+    z-index: 1;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    align-content: center;
+}
+
+@keyframes a_greeter{
+    0% {opacity: 0; margin-top: 50vh; transform: rotateX(-30deg);}
+    100% {opacity: 1; margin-top: 27vh; border-color: aquamarine; transform: rotateX(0deg);}
+}
+
+.greeter{
+    width: 90%;
+    height: 20%;
+    padding-top: 5%;
+    position: static;
+    margin-left: 5%;
+    
+    border-style: solid;
+    border-color: aquamarine;
+    border-width: 5px;
+    border-radius: 5px;
+    
+    user-select: none;
+    
+    color: white;
+    font-size: 230%;
+    text-align: center;
+    
+    animation-name: a_greeter;
+    animation-duration: 1.5s;
+    animation-delay: 1.2s;
+    animation-fill-mode: backwards;
+    z-index: 1;
+    margin-top: 27vh;
+    
+    opacity: 1;
+    border-color: aquamarine;
+}
+
+._tag{
+    font-size: 20px;
+    font-family: monospace;
+    color: white;
+}
+
+.tag{
+    font-size: 20px;
+    font-style: italic;
+    font-family: monospace;
+    color: rgb(211, 205, 124);
+}
+
+@media screen and (orientation: portrait){
+    .greeter{
+        font-size: 7vw;
+    }
+    .tag{
+        font-size: 7vw;
+    }
+}
+
+
+@keyframes cross_waver{
+    0% {transform: rotate(-30deg);}
+    50% {transform: rotate(-20deg);}
+    100% {transform: rotate(-30deg);}
+}
+
+.cross{
+    font-size: 115px;
+    color: rgb(11, 121, 97);
+    width: 300px;
+    transform: rotate(-30deg);
+    transition: transform 1s;
+    position: fixed;
+    top: 55%;
+    left: 15%;
+    user-select: none;
+    
+    animation-name: cross_waver;
+    animation-duration: 4s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+}
+
+.cross:hover{
+    transform: rotate(-20deg);
+    animation: none;
+}
+
+@keyframes half_circle_waver{
+    0% {transform: rotate(40deg);}
+    50% {transform: rotate(10deg);}
+    100% {transform: rotate(40deg);}
+}
+
+.half_circle{
+    font-size: 100px;
+    text-align: right;
+    color: rgb(11, 121, 97);
+    width: 100px;
+    transform: rotate(40deg);
+    transition: transform 1s;
+    position: fixed;
+    top: 73%;
+    right: 20%;
+    user-select: none;
+    
+    animation-name: half_circle_waver;
+    animation-duration: 5s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+}
+
+.half_circle:hover{
+    transform: rotate(5deg);
+    animation: none;
+}
+
+@keyframes circle_waver{
+    0% {transform: rotate(20deg);}
+    50% {transform: rotate(10deg);}
+    100% {transform: rotate(20deg);}
+}
+
+.circle{
+    font-size: 100px;
+    text-align: center;
+    color: rgb(11, 121, 97);
+    width: 100px;
+    height: 300px;
+    transform: rotate(20deg);
+    transition: transform 1s;
+    position: fixed;
+    top: 10%;
+    right: 25%;
+    user-select: none;
+    border-radius: 200px;
+    
+    animation-name: circle_waver;
+    animation-duration: 4.5s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+}
+
+@media screen and (orientation: portrait){
+    .cross{
+        font-size: 15vw;
+        width: 50vw;
+    }
+}
+
+@media screen and (orientation: portrait){
+    .half_circle{
+        font-size: 15vw;
+        width: 5vw;
+    }
+}
+
+@media screen and (orientation: portrait){
+    .circle{
+        font-size: 15vw;
+        width: 10vw;
+        top: 20%;
+    }
+    
+    @keyframes circle_waver{
+    0% {transform: rotate(0deg);}
+    50% {transform: rotate(40deg);}
+    100% {transform: rotate(0deg);}
+}
+}
+
+.circle:hover{
+    transform: rotate(5deg);
+    animation: none;
+}
+
+.license-holder{
+    background-color: black;
+    width: 100%;
+    text-align: center;
+    color: black;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    color: darkgrey;
+    z-index: 2;
+}
+
+.icon-holder{
+    background-color: black;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 8px;
+    text-align: center;
+    z-index: 2;
+    user-select: none;
+}
+
+.icon{
+    width: 30px;
+    height: 30px;
+}
+
+@media screen and (orientation: portrait){
+    .icon{
+        width: 100px;
+        height: 100px;        
+        padding: 20px;
+    }
+    .license-holder{
+        font-size: 37px;
+        padding-bottom: 50px;
+    }
+    .icon-holder{
+        padding-top: 20px;
+        padding-bottom: 15px;
+    }
+}
+
+.main_body{
+    margin: 0px;
+    height: auto;
+    background-color: burlywood;
+    font-family: sans-serif;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+
+
+.text{
+    font-size: 18px;
+    font-family: text_font;
+}
+
+.norm_link{
+    color: cornflowerblue;
+    text-decoration: none;
+}
+
+@media screen and (orientation: portrait){
+    h1{
+        font-size: 70px;
+    }
+    h2{
+        font-size: 50px;
+    }
+    .text{
+        font-size: 40px;
+    }
+}
