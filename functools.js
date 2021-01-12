@@ -69,8 +69,8 @@ window.addEventListener('scroll', function() {
         $("#greeter").css('opacity',1-(scroll*bound-h)/(h/bound));
     }*/
     
-    if (scroll > h/3){
-        var p = (scroll-h/3)/(h/4);
+    if (scroll > h/5){
+        var p = (scroll-h/5)/(h/6);
         if (p<1){
             if (get_orientation() == 'landscape'){
                 $("#cross").css('left',(15-(15+5)*p)+'%');
