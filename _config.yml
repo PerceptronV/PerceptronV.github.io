@@ -33,6 +33,8 @@ author:
 header_pages:
   - index.markdown
   - about.markdown
+  - cv.markdown
+  - portfolio.markdown
 
 minima:
   social_links:
