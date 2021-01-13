@@ -4,7 +4,7 @@ title: About me
 permalink: /about/
 ---
 
-I like technology because it controls the pulse of our rapid world. 
+I am passionate about technology as it controls the pulse of our rapidly evolving world.
 
 Specifically, I enjoy learning about and applying machine learning concepts to realworld problems, like predicting exchange rates, generating poetry, or making personal assistants. Playing around with Arduinos is always cool, too!
 
@@ -14,7 +14,7 @@ It also doesn't hurt to learn some physics - perhaps one day AI will be our best
 
 Aside from ploughing through fields of Pandas dataframes and scary integrals, I sometimes descend into the peaceful lands of poetry and philosophy. Some of my previous work have been published at Balloons Lit. Journal, and I'll be presenting a paper on consciousness in the upcoming Merchant Taylors' School Young Philosophers Conference!
 
-When I have time, I also like learning _Español_ and Latin. 
+When I have time, I learn _Español_ and Latin. 
 
 That's quite a lot of stuff, but hopefully one day all the dots will connect. 
 

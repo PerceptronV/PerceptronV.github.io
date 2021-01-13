@@ -5,4 +5,4 @@
 layout: home
 ---
 
-I like technology because it controls the pulse of our rapid world. 
+I do tech because it controls the pulse of our rapid world.
