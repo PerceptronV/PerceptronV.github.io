@@ -71,7 +71,7 @@ I am passionate about technology as it controls the pulse of our rapidly evolvin
 
 * led an online volunteering effort to tutor young children from less advantaged backgrounds, connecting with the YWCA and holding an interactive, online English course over 10 weeks
 
-* visiting orphanages in Sichuan during Easter to 
+* visiting volunteer at an orphanage in Sichuan, Chinese during Easter
 
 
 #### Commitments (in-school)
