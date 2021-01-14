@@ -11,7 +11,7 @@ Email: [neutrinovs@gmail.com](mailto:neutrinovs@gmail.com)
 
 GitHub: [PerceptronV](https://github.com/PerceptronV/)
 
-I live in Hong Kong but study abroad in London (Year 11).
+I live in Hong Kong but study abroad in London (Year 10).
 
 I am passionate about technology as it controls the pulse of our rapidly evolving world.
 
@@ -53,12 +53,22 @@ I am passionate about technology as it controls the pulse of our rapidly evolvin
 
 * implemented a [push-up counter]({{ site.baseurl }}/beta/graviton.html) with public APIs
 
+* developing a simulated C++ interpreter (beta)
+
 
 ### Awards, Associations and Competitions
 
 * Member of the [Hong Kong Academy for Gifted Education](https://www.hkage.org.hk/en/) (HKAGE)
 
-* [Global Talent Mentoring](https://globaltalentmentoring.org/) 2020 Finalist
+* [Global Talent Mentoring](https://globaltalentmentoring.org/) 2020 <br/> __Global finalist__
+
+* Senior Maths Challenge 2020 <br/> __Gold__
+
+* Intermediate Maths Challenge 2020 <br/> __Gold__
+
+* RSC [Top of the Bench](https://edu.rsc.org/enrichment/top-of-the-bench) Competition 2019-2020 <br/> __National finalist__
+
+* Hong Kong Science Park SciTech Competition 2019 <br/> __2nd Runner up__
 
 
 #### Completed Courses
