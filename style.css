@@ -97,7 +97,7 @@ html {
 
 .top_tray_left{
     padding-top: 65px;
-    text-align: left;
+    text-align: center;
     margin-left: 10px;
     opacity: 0;
     pointer-events: none;
@@ -132,8 +132,8 @@ html {
     }
     
     .top_tray_left{
-        top: 4vh;
-        left: 5vw;
+        top: 0.6vh;
+        left: 1vw;
         animation-name: a_top_tray_left;
         animation-duration: 1s;
         animation-delay: 0.5s;
@@ -141,12 +141,14 @@ html {
     }
     
     .tray_element_left{
-        font-size: 4vh;
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: 5px;
+        font-size: 2.5vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 0.4vh;
+        padding-left: 0.8vh;
+        padding-right: 0.8vh;
+
         border-radius: 10px;
-        padding-left: 10px;
-        padding-right: 10px;
+        margin-bottom: 1vh;
     }
 }
 
@@ -257,10 +259,20 @@ html {
     border-color: aquamarine;
 }
 
-._tag{
-    font-size: 20px;
-    font-family: monospace;
-    color: white;
+@keyframes a_tag{
+    0% {color: #111111;}
+    30% {color:rgb(211, 205, 124);}
+    40% {color: #111111;}
+    45% {color:rgb(211, 205, 124);}
+    50% {color: #111111;}
+    55% {color:rgb(211, 205, 124);}
+    80% {color: #111111;}
+    83% {color:rgb(211, 205, 124);}
+    88% {color: #111111;}
+    91% {color:rgb(211, 205, 124);}
+    94% {color:rgb(211, 205, 124);}
+    98% {color: #111111;}
+    100% {color:rgb(211, 205, 124);}
 }
 
 .tag{
@@ -268,6 +280,12 @@ html {
     font-style: italic;
     font-family: monospace;
     color: rgb(211, 205, 124);
+
+    animation-name: a_tag;
+    animation-duration: 0.5s;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 2;
 }
 
 @media screen and (orientation: portrait){
@@ -275,7 +293,7 @@ html {
         font-size: 7vw;
     }
     .tag{
-        font-size: 7vw;
+        font-size: 5vw;
     }
 }
 

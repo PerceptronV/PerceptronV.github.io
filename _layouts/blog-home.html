@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<html>
+<body>
+    <main class="page-content" aria-label="Content">
+        <div class="wrapper">
+          <div class="home">
+            {%- if page.title -%}
+              <h1 class="page-heading">{{ page.title }}</h1>
+            {%- endif -%}      
+            
+            {% if site.paginate %}
+              {% assign posts = paginator.posts %}
+            {% else %}
+              {% assign posts = site.posts %}
+            {% endif %}
+    
+            {{ content }}
+          
+            {%- include blog-preview.html -%}
+          
+          </div>
+        </div>
+      </main>
+    
+</body>
+</html>
