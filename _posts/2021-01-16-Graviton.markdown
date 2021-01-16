@@ -1,0 +1,25 @@
+---
+layout: post
+title:  "Graviton: A push-up counter in your browser"
+date:   2021-01-16 16:30:12 +0800
+categories: ai ml pose-estimation fitness
+excerpt: Annoyed of counting reps? Make your browser do it for you!
+---
+
+<img src="{{ site.baseurl }}/assets/images/lopez-robin-1JS6n1uT-uI-unsplash.jpg" style="width: 100%; display: block; margin: auto;">
+
+<div style="text-align: center; font-style: italic;">
+<span>Photo by <a href="https://unsplash.com/@lopezrobin?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Lopez Robin</a> on <a href="https://unsplash.com/s/photos/push-up?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+</div> <br/>
+
+We've all been there. You're panting, sweat dripping, triceps burning, struggling, for some unknown reason, to lift your body up for one, more, painful, time...
+
+Then the big problem comes: just, exactly how many reps did I do?
+
+Because somehow those numbers matter.
+
+It's annoying, but tech can make life easier. Using Tensorflow.js's [PoseNet](https://github.com/tensorflow/tfjs-models/tree/master/posenet), I've implemented a basic push-up counter called __Graviton__, which runs only on a browser. No servers involved, so your data is safe.
+
+Graviton tracks your key body locations, and uses their relative positioning to identify whether or not you've completed a rep. To start off, simply set the number of reps you want to do, turn on the counter, and it will beep every time you complete a rep. Once you finish the desired number of reps, there will be another acoustic cue.
+
+Wanna give Graviton a try? Start [here]({{ site.baseurl }}/beta/graviton.html)!
