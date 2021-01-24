@@ -1,0 +1,92 @@
+body {
+    background-image: url('background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    align-content: center;
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+    align-content: center;
+    text-align: center;
+
+    color: white;
+    font-size: 3vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+    color: white;
+    padding-top: 20px;
+    font-size: 5vh;
+    width: 100%;
+
+    font-variant: small-caps;
+}
+
+.inp {
+    height: 7vh;
+    width: 90vw;
+
+    border: none;
+    border-radius: 20px;
+    padding: 1vw;
+
+    font-size: 4vh;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+#go_button {
+    height: 6vh;
+    width: 12vh;
+
+    border-radius: 20px;
+    border: none;
+
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 4vh;
+}
+
+.go_button:hover {
+    color: white;
+    background-color: gray;
+}
+
+.go_button:active {
+    color: white;
+    background-color: black;
+}
+
+#result {
+    background-image: linear-gradient(30deg, rgba(170, 74, 179, 0.856), rgba(77, 180, 221, 0.856));
+    display: none;
+
+    width: 85vw;
+    padding: 20px;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    padding: 20px;
+
+    text-align: center;
+    align-content: center;
+}
+
+#tablewrapper {
+    overflow-x: auto;
+}
+
+td, tr {
+    border: 2px solid rgb(26, 85, 163);
+    padding: 2vh;
+    text-align: center;
+}
+
+#truthtable {
+    margin-left: auto;
+    margin-right: auto;
+}
