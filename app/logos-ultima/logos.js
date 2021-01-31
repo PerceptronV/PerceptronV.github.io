@@ -1,16 +1,168 @@
+// ---------------------------------------------------------------------------------------
+// CONSTANTS
+
 OPERATORS = [
-    'NOT', 'AND', 'OR', 'NAND', 'NOR', 'XOR'
+    'NOT', 'AND', 'OR', 'NAND', 'NOR', 'XOR',
+    '¬',   '/\\', '\\/'
 ]
+
 FUNCS = {
     '%NOT%': function ([a]) { return !a ? '1' : '0'; },
+    '%¬%': function ([a]) { return !a ? '1' : '0'; },
     '%AND%': function ([a, b]) { return a && b ? '1' : '0'; },
+    '%/\\%': function ([a, b]) { return a && b ? '1' : '0'; },
     '%OR%': function ([a, b]) { return a || b ? '1' : '0'; },
+    '%\\/%': function ([a, b]) { return a || b ? '1' : '0'; },
     '%NAND%': function ([a, b]) { return !(a && b) ? '1' : '0'; },
     '%NOR%': function ([a, b]) { return !(a || b) ? '1' : '0'; },
     '%XOR%': function ([a, b]) { return ((a || b) && (a != b)) ? '1' : '0'; }
 }
 
+IDENTITIES = { // Complex -> simplified
+    // Laws, involving depth > 2
+    // Laws, involving relationship between single-order logic gates
+    // Laws, involving strict tautologies, negatives, positives
+}
+
 // ---------------------------------------------------------------------------------------
+// LOGIC TREE
+/*
+class LogicNode {
+    constructor(val = null, childA = undefined, childB = undefined) {
+        this._val = val;
+        this.update();
+        this._children = [childA, childB];
+    }
+
+    update() {
+        if (typeof(this._val) == 'string') {
+            var updated = false;
+
+            if (this._val == 'NOT') {
+                this._type = 'un_op';
+                updated = true;
+            }
+            else if (this._val == '0' || this._val == '1') {
+                this._type = 'bool';
+                this._val = Boolean(Number(this._val));
+                updated = true;
+            }
+            else {
+                for (let i in OPERATORS) if (OPERATORS[i] == this._val) {
+                    this._type = 'bin_op';
+                    updated = true;
+                }
+            }
+            if (!updated) this._type = 'var';
+        }
+        else if (typeof(this._val) == 'number') {
+            this._type = 'bool';
+                this._val = Boolean(Number(this._val));
+        }
+        else if (typeof(this._val) == 'boolean') {
+            this._type = 'bool';
+        }
+        else this._type == undefined;
+
+        if (this._type == 'bin_op') this._bin = true;
+        else this._bin = false;
+    }
+
+    maxDepth() {
+        if (this._type == 'bool' || this._type == 'var') return 1;
+        if (this._bin == true) return 1 + Math.max(this.a.maxDepth(), this.b.maxDepth());
+        return 1 + this.a.maxDepth();
+    }
+
+    simplify() {
+        // Find isomporphisms between identities and branches in tree
+        // Simplify branches
+        // If tautologies, further simplify these branches by evaluating
+    }
+
+    toIR() {
+        if (this._type == 'bool') return String(Number(this._val));
+        if (this._type == 'var') return this._val;
+        if (this._bin == true) return '(' + this.a.toIR() + ' ' + this._val + ' ' + this.b.toIR() + ')';
+        return '(NOT ' + this.a.toIR() + ')';
+    }
+
+    get val() {
+        return this._val;
+    }
+    set val(newVal) {
+        this._val = newVal;
+        var orig = this._bin;
+        this.update();
+        if (orig == true && this._bin == false) this._children[1] = undefined;
+    }
+
+    get type() {
+        return this._type;
+    }
+
+    get a() {
+        return this._children[0];
+    }
+    set a(newChild) {
+        this._children[0] = newChild;
+    }
+
+    get b() {
+        return this._children[1];
+    }
+    set b(newChild) {
+        this._children[1] = newChild;
+    }
+
+    get children() {
+        if (this._bin) return [this._children[0], this._children[1]];
+        return [this._children[0]];
+    }
+
+    static fromIR(s) {
+        var bounds = [];
+        var bracket = 0;
+
+        for (let i = 0; i < statement.length; i++) {
+            if (statement.charAt(i) == '(') {
+                bracket++;
+                if (bracket == 1) bounds.push([i]);
+            }
+            else if (statement.charAt(i) == ')') {
+                bracket--;
+                if (bracket == 0) bounds[bounds.length - 1].push(i + 1);
+            }
+        }
+
+        if (bounds.length == 0) {
+            for (let i = 0; i < OPERATORS.length; i++) {
+                var op = OPERATORS[i];
+                var splits = s.split('%' + op + '%');
+        
+                if (splits.length > 1) {
+                    splits = remove_empty_str(splits);
+                    if (op == 'NOT') return new LogicNode('NOT', new LogicNode(splits[0]));
+                    return new LogicNode(op, new LogicNode(splits[0]), new LogicNode(splits[1]));
+                }
+            }
+            return new LogicNode(s);
+        }
+
+        var rep = {};
+        var n = '';
+        for (let i in bounds) {
+            rep[s.splice(bounds[i][0], bounds[i][1])] = 
+        }
+    }
+
+
+    static ismorphic(nodea, nodeb) {}
+    static convert(nodea, nodeo, nodet) {}
+}
+*/
+// ---------------------------------------------------------------------------------------
+// BASIC UTILS
 
 const isAlnum = ch => {
     return ch.match(/^[a-z0-9]+$/i) !== null;
@@ -48,6 +200,11 @@ function valid(s, idx) {
     return !(isAlnum(c) || c == '%');
 }
 
+function isCharAt(s, c, idx) { // Whether char at s[idx] is c; if idx out of bounds return false
+    if (idx < 0 || idx >= s.length) return false;
+    return s.charAt(idx) == c;
+}
+
 function permute(len, depth = 1) {
     if (depth == len) {
         return [0, 1];
@@ -60,10 +217,6 @@ function permute(len, depth = 1) {
     return r;
 }
 
-function ir2dp(s) {
-    return s.replace(/[$%/]+/g, ' ').trim();
-}
-
 function len_sort(d) {
     var r = {};
     var sorted_keys = Object.keys(d).sort(function(a, b) {return a.length>b.length});
@@ -73,7 +226,7 @@ function len_sort(d) {
 }
 
 function remove_repeated(d, s) {
-    s = ir2dp(s);
+    s = ir2str(s);
     var k = Object.keys(d);
     for (let i in k) {
         if (k[i] == s || k[i] == '('+s+')' || '('+k[i]+')' == s) delete d[k[i]];
@@ -83,6 +236,7 @@ function remove_repeated(d, s) {
 }
 
 // ---------------------------------------------------------------------------------------
+// LOW-LEVEL FUNCTIONS
 
 function tokenize_operators(s) {
     var r = '';
@@ -138,8 +292,6 @@ function tokenize_vars(s) {
     return [r, vars];
 }
 
-// ---------------------------------------------------------------------------------------
-
 function brac_nots(s) {
     var r = '', brac_count = 0, exp_count = 0, conds = [];
 
@@ -159,8 +311,8 @@ function brac_nots(s) {
         if (c.match(/[()/]/)) r += c;
         for (let j=0; j<conds.length; j++) {
             if (brac_count == conds[j][0] && exp_count > conds[j][1]) {
-                conds.splice(j, 1);
                 r += ')';
+                conds.splice(j, 1);
             }
         }
         if (!c.match(/[()/]/)) r += c;
@@ -171,12 +323,8 @@ function brac_nots(s) {
     return r;
 }
 
-function preproc(statement) {
-    return tokenize_operators(statement).replace(/\s+/g, '');
-}
-
 function eval_single(s, vars, vals) {
-    var orig = ir2dp(s);
+    var orig = ir2str(s);
     var v = {};
 
     for (let i = 0; i < vars.length; i++) {
@@ -201,7 +349,7 @@ function eval(statement, vars, vals) {
     var bounds = [];
     var bracket = 0;
     var v = {};
-    var orig = ir2dp(statement);
+    var orig = ir2str(statement);
 
     for (let i = 0; i < statement.length; i++) {
         if (statement.charAt(i) == '(') {
@@ -245,29 +393,43 @@ function eval(statement, vars, vals) {
 function simplify() { }
 
 // ---------------------------------------------------------------------------------------
+// HIGH-LEVEL FUNCTIONS
+
 /* Tests:
 ((A AND B)OR (NOT NOT C OR (A NOR C))) AND NOT (C OR B)
 (NOT (NOT A OR (A AND B))) OR (A AND B)
 NOT NOT A
 */
 
-function main() {
+function ir2str(s) {
+    return s.replace(/[$%/]+/g, ' ').trim();
+}
+
+function str2ir(s) {
+    var statement = tokenize_operators(s).replace(/\s+/g, '');
+    var v;
+    [statement, v] = tokenize_vars(statement);
+    statement = brac_nots(statement);
+    v = v.sort();
+
+    return [statement, v];
+}
+
+function main(logic_id = 'logic', checkbox_id = 'check',
+              truthtable_id = 'truthtable', result_div_id = 'result') {
     var vars, permutes;
-    var statement = document.getElementById('logic').value;
-    var inter = document.getElementById('check').checked;
+    var statement = document.getElementById(logic_id).value;
+    var inter = document.getElementById(checkbox_id).checked;
     
     localStorage.setItem("exp", statement);
     localStorage.setItem("inter", inter);
 
-    statement = preproc(statement);
-    [statement, vars] = tokenize_vars(statement);
-    statement = brac_nots(statement);
-    vars = vars.sort();
+    [statement, vars] = str2ir(statement);
 
     console.log('Preprocessed statement:', statement);
     console.log('Variables:', vars);
 
-    var table = document.getElementById("truthtable");
+    var table = document.getElementById(truthtable_id);
 
     while (table.rows.length != 0) table.deleteRow(0);
 
@@ -303,7 +465,7 @@ function main() {
     }
     row.insertCell(-1).innerHTML = '*OUT*';
 
-    document.getElementById('result').style.display = 'block';
+    document.getElementById(result_div_id).style.display = 'block';
 }
 
 document.getElementById("logic").addEventListener("keyup", function(event) {
