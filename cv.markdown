@@ -18,8 +18,8 @@ I am passionate about technology as it controls the pulse of our rapidly evolvin
 
 ### Education
 
-| 2019 - present | [Harrow School (UK)](https://www.harrowschool.org.uk/) |
-| 2018 - 2019 | [St. Paul's Co-Educational College (HK)](https://www.spcc.edu.hk/) |
+| 2019 - present | [Harrow School (UK)](https://www.harrowschool.org.uk/) (Honorary Academic Scholar) |
+| 2018 - 2019 | [St. Paul's Co-Educational College (HK)](https://www.spcc.edu.hk/) (Full Scholarship) |
 | 2012 - 2018 | [Ying Wa Primary School (HK)](https://www.yingwaps.edu.hk/) |
 
 
