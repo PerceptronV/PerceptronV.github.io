@@ -60,7 +60,7 @@ I am passionate about technology as it controls the pulse of our rapidly evolvin
 
 * Member of the [Hong Kong Academy for Gifted Education](https://www.hkage.org.hk/en/) (HKAGE)
 
-* Mentee of [Global Talent Mentoring](https://globaltalentmentoring.org/)
+* Mentee of [Global Talent Mentoring](https://globaltalentmentoring.org/) (application round 2020-2021)
 
 * Senior Maths Challenge 2020 <br/> __Gold__
 
