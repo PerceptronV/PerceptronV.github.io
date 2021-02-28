@@ -14,7 +14,15 @@
   </div>
   </div>
   <textarea id="dna">
+var diff = pred.position.clone().subtract(boid_instance.position),
+distance = diff.length(),
+cos = pred.velocity.clone().normalize().dot(boid_instance.velocity.clone().normalize()),
+ang = Math.acos(cos);
 
+if (distance && distance < avoidanceRadius)
+{
+  forces.avoidance.add(pred.velocity.clone().rotate(ang).scaleTo(-1/distance)).active = true;
+}
 </textarea>
   </div>
 
@@ -93,14 +101,49 @@
     restart();
     requestAnimationFrame(tick);
 
+    function sine_behaviour(boid_instance, pred, forces) {
+      var diff = pred.position.clone().subtract(boid_instance.position),
+        distance = diff.length(),
+        cos = pred.velocity.clone().normalize().dot(boid_instance.velocity.clone().normalize()),
+        ang = Math.acos(cos);
+
+      if (distance && distance < avoidanceRadius) {
+        forces.avoidance.add(pred.velocity.clone().rotate(ang).scaleTo(-1 / distance)).active = true;
+      }
+    }
+
+    function default_behaviour(boid_instance, pred, forces) {
+      var diff = pred.position.clone().subtract(boid_instance.position),
+        distance = diff.length(),
+        cos = pred.velocity.clone().normalize().dot(boid_instance.velocity.clone().normalize()),
+        ang = Math.acos(cos);
+
+      if (distance && distance < avoidanceRadius) {
+        forces.avoidance.add(pred.velocity.clone().rotate(ang).scaleTo(-1 / distance)).active = true;
+      }
+    }
+
+    function user_behaviour(boid_instance, pred, forces) {
+      var dna = document.getElementById('dna').innerHTML;
+      var code = "var boid_instance = this.boid_instance;\n";
+      code += "var pred = this.pred;\n";
+      code += "var forces = this.forces;\n";
+      code += dna + "\n";
+      code += "return (boid_instance, pred, forces);";
+      code = code.replaceAll('&amp;', '&').replaceAll('&lt;', '<').replaceAll('&gt;', '>');
+      new Function(code).call({
+        boid_instance: boid_instance,
+        pred: pred,
+        forces, forces
+      });
+    }
+
     function tick() {
 
       offscreenContext.clearRect(0, 0, width, height);
       offscreenContext.drawImage(canvas, 0, 0, width, height);
       context.clearRect(0, 0, width, height);
       context.drawImage(offscreen, 0, 0, width, height);
-
-      var dna = document.getElementById('dna').innerHTML;
 
       boids.forEach(function (boid_instance) {
         var forces = {
@@ -142,15 +185,7 @@
         }
 
         predators.forEach(function (pred) {
-          var diff = pred.position.clone().subtract(boid_instance.position),
-              distance = diff.length(),
-              cos = pred.velocity.clone().normalize().dot(boid_instance.velocity.clone().normalize()),
-              ang = Math.acos(cos);
-          
-          if (distance && distance < avoidanceRadius)
-          {
-            forces.avoidance.add(pred.velocity.clone().rotate(ang).scaleTo(-1/distance)).active = true;
-          }
+          sine_behaviour(boid_instance, pred, forces);
         });
 
         for (var key in forces) {
@@ -185,7 +220,7 @@
         };
 
         pred_instance.acceleration = new Vec2();
-        
+
         boids.forEach(function (other_boid) {
           var diff = other_boid.position.clone().subtract(pred_instance.position),
             distance = diff.length();
@@ -202,7 +237,7 @@
 
         predators.forEach(function (other_pred) {
           var diff = other_pred.position.clone().subtract(pred_instance.position),
-              distance = diff.length();
+            distance = diff.length();
 
           if (distance && distance < 10) {
             forces.separation.add(diff.clone().scaleTo(-1 / distance)).active = true;
