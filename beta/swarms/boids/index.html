@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<!-- Based on Noah Veltman's code at https://bl.ocks.org/veltman/995d3a677418100ac43877f3ed1cc728 -->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+</head>
+</style>
+
+<body>
+  <div>
+    <canvas width="960" height="500" id='canv' style="border:1px solid #000000;"></canvas>
+    <canvas width="960" height="500" class="offscreen" style="display: none;"></canvas>
+  </div>
+  </div>
+  <textarea id="dna">
+
+</textarea>
+  </div>
+
+  <link rel="stylesheet" href="codemirror/lib/codemirror.css">
+  <link rel="stylesheet" href="codemirror/theme/dracula.css">
+  <script src="codemirror/lib/codemirror.js"></script>
+  <script src="codemirror/mode/javascript/javascript.js"></script>
+
+  <script>
+    var editor = CodeMirror.fromTextArea(document.getElementById('dna'), {
+      lineNumbers: true,
+      mode: 'javascript',
+      theme: 'dracula'
+    });
+  </script>
+
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.5/dat.gui.min.js"></script>
+  <script src="vec2.js"></script>
+
+  <script>
+
+    var canvas = document.querySelector("canvas"),
+      context = canvas.getContext("2d"),
+      offscreen = document.querySelector(".offscreen"),
+      offscreenContext = offscreen.getContext("2d"),
+      gui = new dat.GUI({ hideable: false, width: 300 });
+
+    var width = 960,
+      height = 500,
+      numBoids = 300,
+      numPredators = 5,
+      flockmateRadius = 60,
+      separationRadius = 30,
+      collisionRadius = 30,
+      avoidanceRadius = 300,
+      avoidanceAngle = 140,
+      maxBoidVelocity = 2.5,
+      maxPredatorVelocity = 3,
+      separationForce = 0.03,
+      alignmentForce = 0.03,
+      cohesionForce = 0.03,
+      avoidanceForce = 0.1,
+      startingPosition = "Random",
+      coloring = "By Movement",
+      boids,
+      predators;
+
+    offscreenContext.globalAlpha = 0.85;
+
+    gui.add(window, "flockmateRadius", 0, 500).step(1);
+    gui.add(window, "separationRadius", 0, 100).step(1);
+    gui.add(window, "avoidanceRadius", 0, 500).step(10);
+    gui.add(window, "maxBoidVelocity", 0, 10).step(0.25);
+    gui.add(window, "maxPredatorVelocity", 0, 10).step(0.25);
+    gui.add(window, "cohesionForce", 0, 0.25);
+    gui.add(window, "alignmentForce", 0, 0.25);
+    gui.add(window, "separationForce", 0, 0.25);
+    gui.add(window, "avoidanceForce", 0, 0.25);
+    gui.add(window, "numBoids", 1, 600).step(1).onChange(restart);
+    gui.add(window, "numPredators", 1, 20).step(1).onChange(restart);
+    gui.add(window, "startingPosition", ["Random", "CircleIn", "CircleRandom", "Sine", "Phyllotaxis"]).onChange(restart);
+    gui.add(window, "coloring", ["Rainbow", "By Movement"]);
+    gui.add(window, "restart");
+
+    d3.select("canvas").on("click", function () {
+      var xy = d3.mouse(this);
+      boids.push({
+        color: d3.interpolateRainbow((boids.length / 10) % 1),
+        position: new Vec2(xy[0], xy[1]),
+        velocity: randomVelocity(),
+        last: []
+      });
+    });
+
+    restart();
+    requestAnimationFrame(tick);
+
+    function tick() {
+
+      offscreenContext.clearRect(0, 0, width, height);
+      offscreenContext.drawImage(canvas, 0, 0, width, height);
+      context.clearRect(0, 0, width, height);
+      context.drawImage(offscreen, 0, 0, width, height);
+
+      var dna = document.getElementById('dna').innerHTML;
+
+      boids.forEach(function (boid_instance) {
+        var forces = {
+          alignment: new Vec2(),
+          cohesion: new Vec2(),
+          separation: new Vec2(),
+          avoidance: new Vec2()
+        };
+
+        boid_instance.acceleration = new Vec2();
+        var x_pos = boid_instance.position.x;
+        var y_pos = boid_instance.position.y;
+
+        boids.forEach(function (other_boid) {
+          if (boid_instance === other_boid) return;
+
+          var diff = other_boid.position.clone().subtract(boid_instance.position),
+            distance = diff.length();
+
+          if (distance && distance < separationRadius) {
+            forces.separation.add(diff.clone().scaleTo(-1 / distance)).active = true;
+          }
+
+          if (distance < flockmateRadius) {
+            forces.cohesion.add(diff).active = true;
+            forces.alignment.add(other_boid.velocity).active = true;
+          }
+
+        });
+
+        if (x_pos < avoidanceRadius) {
+          forces.avoidance.add(new Vec2(avoidanceRadius - x_pos, 0)).active = true;
+        } else if (x_pos > width - avoidanceRadius) {
+          forces.avoidance.add(new Vec2(-(x_pos - (width - avoidanceRadius)), 0)).active = true;
+        } else if (y_pos < avoidanceRadius) {
+          forces.avoidance.add(new Vec2(0, avoidanceRadius - y_pos)).active = true;
+        } else if (y_pos > height - avoidanceRadius) {
+          forces.avoidance.add(new Vec2(0, - (y_pos - (height - avoidanceRadius)))).active = true;
+        }
+
+        predators.forEach(function (pred) {
+          var diff = pred.position.clone().subtract(boid_instance.position),
+              distance = diff.length(),
+              cos = pred.velocity.clone().normalize().dot(boid_instance.velocity.clone().normalize()),
+              ang = Math.acos(cos);
+          
+          if (distance && distance < avoidanceRadius)
+          {
+            forces.avoidance.add(pred.velocity.clone().rotate(ang).scaleTo(-1/distance)).active = true;
+          }
+        });
+
+        for (var key in forces) {
+          if (forces[key].active) {
+            forces[key].scaleTo(maxBoidVelocity)
+              .subtract(boid_instance.velocity)
+              .truncate(window[key + "Force"]);
+            boid_instance.acceleration.add(forces[key]);
+          }
+        }
+
+        if (coloring === "By Movement") {
+          boid_instance.last.push(boid_instance.acceleration.length() / (alignmentForce + cohesionForce + separationForce));
+          if (boid_instance.last.length > 20) {
+            boid_instance.last.shift();
+          }
+        }
+
+      });
+
+      predators.forEach(function (pred_instance) {
+        var params = {
+          alignmentForce: 0.01,
+          cohesionForce: 0.1,
+          separationForce: 0.01
+        }
+
+        var forces = {
+          alignment: new Vec2(),
+          cohesion: new Vec2(),
+          separation: new Vec2()
+        };
+
+        pred_instance.acceleration = new Vec2();
+        
+        boids.forEach(function (other_boid) {
+          var diff = other_boid.position.clone().subtract(pred_instance.position),
+            distance = diff.length();
+
+          if (distance && distance < separationRadius) {
+            forces.separation.add(diff.clone().scaleTo(-1 / distance)).active = true;
+          }
+
+          if (distance < flockmateRadius) {
+            forces.cohesion.add(diff).active = true;
+            forces.alignment.add(other_boid.velocity).active = true;
+          }
+        });
+
+        predators.forEach(function (other_pred) {
+          var diff = other_pred.position.clone().subtract(pred_instance.position),
+              distance = diff.length();
+
+          if (distance && distance < 10) {
+            forces.separation.add(diff.clone().scaleTo(-1 / distance)).active = true;
+          }
+        });
+
+        for (var key in forces) {
+          if (forces[key].active) {
+            forces[key].scaleTo(maxPredatorVelocity)
+              .subtract(pred_instance.velocity)
+              .truncate(params[key + "Force"]);
+            pred_instance.acceleration.add(forces[key]);
+          }
+        }
+      });
+
+      boids.forEach(updateBoid);
+      predators.forEach(updatePredator);
+      requestAnimationFrame(tick);
+
+    }
+
+    function updateBoid(b) {
+      b.position.add(b.velocity.add(b.acceleration).truncate(maxBoidVelocity));
+
+      if (b.position.y > height) {
+        b.position.y -= height;
+      } else if (b.position.y < 0) {
+        b.position.y += height;
+      }
+
+      if (b.position.x > width) {
+        b.position.x -= width;
+      } else if (b.position.x < 0) {
+        b.position.x += width;
+      }
+
+      context.beginPath();
+      if (coloring === "Rainbow") {
+        context.fillStyle = b.color;
+      } else {
+        context.fillStyle = d3.interpolateWarm(d3.mean(b.last));
+      }
+      context.arc(b.position.x, b.position.y, 2, 0, 2 * Math.PI);
+      context.fill();
+    }
+
+    function updatePredator(p) {
+      p.position.add(p.velocity.add(p.acceleration).truncate(maxPredatorVelocity));
+
+      if (p.position.y > height) {
+        p.position.y -= height;
+      } else if (p.position.y < 0) {
+        p.position.y += height;
+      }
+
+      if (p.position.x > width) {
+        p.position.x -= width;
+      } else if (p.position.x < 0) {
+        p.position.x += width;
+      }
+
+      context.beginPath();
+      context.fillStyle = p.color;
+      context.arc(p.position.x, p.position.y, 2, 0, 2 * Math.PI);
+      context.fill();
+    }
+
+    function initializePredators() {
+      return d3.range(numPredators).map(function (d, i) {
+        return {
+          position: new Vec2(Math.random() * width, Math.random() * height),
+          velocity: randomPredVelocity()
+        };
+      });
+    }
+
+    function initializeRandom() {
+      return d3.range(numBoids).map(function (d, i) {
+        return {
+          position: new Vec2(Math.random() * width, Math.random() * height),
+          velocity: randomVelocity()
+        };
+      });
+    }
+
+    function initializePhyllotaxis() {
+      return d3.range(numBoids).map(function (d, i) {
+        var θ = Math.PI * i * (Math.sqrt(5) - 1),
+          r = Math.sqrt(i) * 200 / Math.sqrt(numBoids);
+
+        return {
+          position: new Vec2(width / 2 + r * Math.cos(θ), height / 2 - r * Math.sin(θ)),
+          velocity: radialVelocity(i / numBoids)
+        };
+      });
+    }
+
+    function initializeSine() {
+      return d3.range(numBoids).map(function (i) {
+        var angle = 2 * Math.PI * i / numBoids,
+          x = width * i / numBoids,
+          y = height / 2 + Math.sin(angle) * height / 4;
+
+        return {
+          position: new Vec2(x, y),
+          velocity: radialVelocity(i / numBoids)
+        };
+      });
+    }
+
+    function initializeCircleIn() {
+      return d3.range(numBoids).map(function (i) {
+        var angle = i * 2 * Math.PI / numBoids,
+          x = 200 * Math.sin(angle),
+          y = 200 * Math.cos(angle);
+
+        return {
+          position: new Vec2(x + width / 2, y + height / 2),
+          velocity: new Vec2(-x, -y).scale(maxBoidVelocity)
+        };
+      });
+    }
+
+    function initializeCircleRandom() {
+      return d3.range(numBoids).map(function (i) {
+        var angle = i * 2 * Math.PI / numBoids,
+          x = 200 * Math.sin(angle),
+          y = 200 * Math.cos(angle);
+
+        return {
+          position: new Vec2(x + width / 2, y + height / 2),
+          velocity: randomVelocity().scale(maxBoidVelocity)
+        };
+      });
+    }
+
+    function randomVelocity() {
+      return new Vec2(1 - Math.random() * 2, 1 - Math.random() * 2).scale(maxBoidVelocity);
+    }
+
+    function constrain(val, min, max) {
+      if (val <= max && val >= min) return val;
+      if (val > max) return max;
+      if (val < min) return min;
+    }
+
+    function randomPredVelocity() {
+      return new Vec2(constrain(Math.random() + 0.5, 0.5, 1), constrain(Math.random() + 0.5, 0.5, 1)).scale(maxPredatorVelocity);
+    }
+
+    function radialVelocity(p) {
+      return new Vec2(Math.sin(2 * Math.PI * p), Math.cos(2 * Math.PI * p)).scale(maxBoidVelocity);
+    }
+
+    function restart() {
+      offscreenContext.clearRect(0, 0, width, height);
+      context.clearRect(0, 0, width, height);
+
+      boids = window["initialize" + startingPosition]();
+      boids.forEach(function (b, i) {
+        b.color = d3.interpolateRainbow(i / numBoids);
+        b.last = [];
+      });
+
+      predators = initializePredators();
+      predators.forEach(function (p, i) {
+        p.color = "rgb(0, 0, 0)";
+        p.last = [];
+      });
+    }
+
+  </script>
+  <div style="text-align: center;">
+    <p style="color: gray; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: x-small;">This
+      website is based on Noah Veltman's code at <a
+        href='https://bl.ocks.org/veltman/995d3a677418100ac43877f3ed1cc728'>https://bl.ocks.org/veltman/995d3a677418100ac43877f3ed1cc728</a>,
+      but with the addition of predator and wall-avoiding behaviour, as well as an interactive editor based on <a
+        href='https://codemirror.net/'>Codemirror</a>.</p>
+  </div>
