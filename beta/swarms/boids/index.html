@@ -14,14 +14,72 @@
   </div>
   </div>
   <textarea id="dna">
-var diff = pred.position.clone().subtract(boid_instance.position),
-distance = diff.length(),
-cos = pred.velocity.clone().normalize().dot(boid_instance.velocity.clone().normalize()),
-ang = Math.acos(cos);
+var forces = { // Forces acting altering trajectory of each boid
+  alignment: new Vec2(),
+  cohesion: new Vec2(),
+  separation: new Vec2(),
+  avoidance: new Vec2()
+};
 
-if (distance && distance < avoidanceRadius)
-{
-  forces.avoidance.add(pred.velocity.clone().rotate(ang).scaleTo(-1/distance)).active = true;
+boid_instance.acceleration = new Vec2();
+var x_pos = boid_instance.position.x;
+var y_pos = boid_instance.position.y;
+
+boids.forEach(function (other_boid) { // Updating forces by iterating through the states of all the other boids
+  if (boid_instance === other_boid) return;
+
+  var diff = other_boid.position.clone().subtract(boid_instance.position), // Getting direction to other_boid
+      distance = diff.length();
+
+  // Force of separation points in direction of other_boid's location
+  // Magnitude inversely proportional to distance between them
+  if (distance && distance < separationRadius) {
+    forces.separation.add(diff.clone().scaleTo(-1 / distance)).active = true;
+  }
+  
+  // Force of cohesion points in direction of other_boid's location
+  // Force of alignment points in direction of other_boid's velocity
+  if (distance < flockmateRadius) {
+    forces.cohesion.add(diff).active = true;
+    forces.alignment.add(other_boid.velocity).active = true;
+  }
+
+});
+
+// Force of wall avoidance points out from wall
+// Its magnitude is inversely proportional to distance between boid and wall
+if (x_pos < avoidanceRadius) {
+  forces.avoidance.add(new Vec2(avoidanceRadius - x_pos, 0)).active = true;
+} else if (x_pos > width - avoidanceRadius) {
+  forces.avoidance.add(new Vec2(-(x_pos - (width - avoidanceRadius)), 0)).active = true;
+}
+if (y_pos < avoidanceRadius) {
+  forces.avoidance.add(new Vec2(0, avoidanceRadius - y_pos)).active = true;
+} else if (y_pos > height - avoidanceRadius) {
+  forces.avoidance.add(new Vec2(0, - (y_pos - (height - avoidanceRadius)))).active = true;
+}
+
+// Iterating through predators to update predator avoidance forces
+// Just playing around here; the boids aren't that good at avoiding being eaten yet
+predators.forEach(function (pred) {
+  var diff = pred.position.clone().subtract(boid_instance.position),
+  distance = diff.length(),
+  cos = pred.velocity.clone().normalize().dot(boid_instance.velocity.clone().normalize()),
+  ang = Math.acos(cos);
+
+  if (distance && distance < avoidanceRadius) {
+    forces.avoidance.add(pred.velocity.clone().rotate(-ang).scaleTo(-1 / distance).scale(30)).active = true;
+    forces.avoidance.add(diff.clone().scaleTo(-1 / distance).scale(30)).active = true;
+  }
+});
+
+for (var key in forces) {
+  if (forces[key].active) {
+    forces[key].scaleTo(maxBoidVelocity)
+      .subtract(boid_instance.velocity)
+      .truncate(window[key + "Force"]);
+    boid_instance.acceleration.add(forces[key]);
+  }
 }
 </textarea>
   </div>
@@ -58,10 +116,9 @@ if (distance && distance < avoidanceRadius)
       flockmateRadius = 60,
       separationRadius = 30,
       collisionRadius = 30,
-      avoidanceRadius = 300,
-      avoidanceAngle = 140,
-      maxBoidVelocity = 2.5,
-      maxPredatorVelocity = 3,
+      avoidanceRadius = 60,
+      maxBoidVelocity = 3,
+      maxPredatorVelocity = 1.7,
       separationForce = 0.03,
       alignmentForce = 0.03,
       cohesionForce = 0.03,
@@ -75,7 +132,7 @@ if (distance && distance < avoidanceRadius)
 
     gui.add(window, "flockmateRadius", 0, 500).step(1);
     gui.add(window, "separationRadius", 0, 100).step(1);
-    gui.add(window, "avoidanceRadius", 0, 500).step(10);
+    gui.add(window, "avoidanceRadius", 0, 100).step(1);
     gui.add(window, "maxBoidVelocity", 0, 10).step(0.25);
     gui.add(window, "maxPredatorVelocity", 0, 10).step(0.25);
     gui.add(window, "cohesionForce", 0, 0.25);
@@ -83,7 +140,7 @@ if (distance && distance < avoidanceRadius)
     gui.add(window, "separationForce", 0, 0.25);
     gui.add(window, "avoidanceForce", 0, 0.25);
     gui.add(window, "numBoids", 1, 600).step(1).onChange(restart);
-    gui.add(window, "numPredators", 1, 20).step(1).onChange(restart);
+    gui.add(window, "numPredators", 0, 20).step(1).onChange(restart);
     gui.add(window, "startingPosition", ["Random", "CircleIn", "CircleRandom", "Sine", "Phyllotaxis"]).onChange(restart);
     gui.add(window, "coloring", ["Rainbow", "By Movement"]);
     gui.add(window, "restart");
@@ -108,7 +165,7 @@ if (distance && distance < avoidanceRadius)
         ang = Math.acos(cos);
 
       if (distance && distance < avoidanceRadius) {
-        forces.avoidance.add(pred.velocity.clone().rotate(ang).scaleTo(-1 / distance)).active = true;
+        forces.avoidance.add(pred.velocity.clone().scaleTo(-1 / distance)).active = true;
       }
     }
 
@@ -119,7 +176,8 @@ if (distance && distance < avoidanceRadius)
         ang = Math.acos(cos);
 
       if (distance && distance < avoidanceRadius) {
-        forces.avoidance.add(pred.velocity.clone().rotate(ang).scaleTo(-1 / distance)).active = true;
+        forces.avoidance.add(pred.velocity.clone().rotate(-ang).scaleTo(-1 / distance).scale(30)).active = true;
+        forces.avoidance.add(diff.clone().scaleTo(-1 / distance).scale(30)).active = true;
       }
     }
 
@@ -178,14 +236,23 @@ if (distance && distance < avoidanceRadius)
           forces.avoidance.add(new Vec2(avoidanceRadius - x_pos, 0)).active = true;
         } else if (x_pos > width - avoidanceRadius) {
           forces.avoidance.add(new Vec2(-(x_pos - (width - avoidanceRadius)), 0)).active = true;
-        } else if (y_pos < avoidanceRadius) {
+        }
+        if (y_pos < avoidanceRadius) {
           forces.avoidance.add(new Vec2(0, avoidanceRadius - y_pos)).active = true;
         } else if (y_pos > height - avoidanceRadius) {
           forces.avoidance.add(new Vec2(0, - (y_pos - (height - avoidanceRadius)))).active = true;
         }
 
         predators.forEach(function (pred) {
-          sine_behaviour(boid_instance, pred, forces);
+          var diff = pred.position.clone().subtract(boid_instance.position),
+          distance = diff.length(),
+          cos = pred.velocity.clone().normalize().dot(boid_instance.velocity.clone().normalize()),
+          ang = Math.acos(cos);
+
+          if (distance && distance < avoidanceRadius) {
+            forces.avoidance.add(pred.velocity.clone().rotate(-ang).scaleTo(-1 / distance).scale(30)).active = true;
+            forces.avoidance.add(diff.clone().scaleTo(-1 / distance).scale(30)).active = true;
+          }
         });
 
         for (var key in forces) {
