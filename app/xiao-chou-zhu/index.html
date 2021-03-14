@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <link rel="icon" href="icon.png">
+        <title>小臭豬</title>
+    </head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <body>
+        <div id="loader"></div>
+        <div id='login'>
+            <p class='greeter'>{{ greeter }}</p>
+            <img src="./icon.png" alt="logo" class="logo"/>
+            <div style="padding-top: 5vh;">
+                <div><a class='entry'>{{ username }}</a></div>
+                <input type="normal" id="usn" class='inp' placeholder="請輸入" spellcheck="false"/>
+            </div>
+            <div style="padding-top: 2vh;">
+                <div><a class='entry'>{{ password }}</a></div>
+                <input type="password" id="pswd" class='inp' placeholder="請輸入" spellcheck="false"/>
+            </div> 
+            <button onclick="sign_in()" id="sign_in_button" class='stybut'>
+                {{ login }}
+            </button>
+            <div id = 'error'></div>
+        </div>
+        <div id="dashboard">
+            <div id='toolbar' style="position: fixed; left: 80%; width: 20%;">
+                <button onclick="show_entry()" id="sign_in_button" class='stybut newbut' style="margin-top: 10px; width: 50%;">
+                    新增記錄
+                </button>
+                <button onclick="sign_out()" id="sign_in_button" class='stybut' style='width: 30%; margin-left: 15px; margin-top: 10px;'>
+                    登出
+                </button>
+            </div>
+            <div style="padding: 1%;"><a style='font-size: 30px; color: darkslategray; align-self: center;'>歡迎來到小臭豬主頁！</a></div>
+            <div style="padding: 1%;">
+                <table id='table'>
+                    <tr>
+                        <th>時間</th>
+                        <th>高壓</th>
+                        <th>低壓</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id='new_val'>
+            <img src="icon.png" alt="Icon" height=50% style='border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;'>
+            <p style='font-size: 30px;'>小臭豬新增血壓！</p>
+            <div style="padding-bottom: 3%;"><a class='stytxt'>高壓: </a><input type="number" id="systole" class='stytxt' placeholder="請輸入"></div>
+            <div style="padding-bottom: 3%;"><a class='stytxt'>低壓: </a><input type="number" id="diastole" class='stytxt' placeholder="請輸入"></div> 
+            <button onclick="exit_entry()" id="exit_button" class='stybut' style='align-self: center; margin-right: 15px;'>
+                退出
+            </button>
+            <button onclick="new_entry()" id="new_entry_button" class='stybut' style='align-self: center; margin-left: 15px;'>
+                新增
+            </button>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
+        <script src="text.js"></script>
+        <script src="config.js"></script>
+        <script src="utils.js"></script>
+        <script>
+            function sign_in(){
+            document.getElementById("loader").style.display = "block";
+            var email = document.getElementById('usn').value;
+            var password = document.getElementById('pswd').value;
+
+            firebase.auth().signInWithEmailAndPassword(email, password).then(function(creds) {
+                document.getElementById("loader").style.display = "none";
+                document.getElementById('error').innerHTML = "";
+            }).catch(function(error) {
+                document.getElementById("loader").style.display = "none";
+                document.getElementById('error').innerHTML = "用戶名或密碼出錯";
+            });
+
+            document.getElementById('usn').value="";
+            document.getElementById('pswd').value="";
+
+            var email = "";
+            var password = "";                
+        }
+        </script>
+    </body>
+</html>

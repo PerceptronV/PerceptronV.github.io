@@ -1,0 +1,189 @@
+.stybut{
+    color: white;
+    height: 40px;
+    width: 200px;
+    text-align: center;
+    background-color: darkseagreen;
+    border: None;
+    transition: background-color 1s;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.stybut:hover{
+    border: blue;
+    background-color: darkolivegreen;
+    cursor: pointer;
+}
+
+.newbut{
+    width: 100px;
+    background-color: dodgerblue;
+    transition: background-color 0.5s width 0.5s;
+}
+
+.newbut:hover{
+    background-color: cadetblue;
+}
+
+table {
+    padding: 10px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td{
+    border: 2px solid white;
+    text-align: center;
+    padding: 8px;
+    color: black;
+}
+
+th {
+    border: 2px solid white;
+    text-align: center;
+    padding: 8px;
+    color: black;
+    background-color: beige;
+}
+
+tr:nth-child(odd) {
+    background-color: aliceblue;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+body {
+    background-image:
+        linear-gradient(217deg, rgba(255, 0, 0, 0.8), rgba(0, 195, 255, 0.801) 70.71%),
+        linear-gradient(127deg, rgba(0,255,0,.8), rgba(238, 255, 0, 0.788) 70.71%),
+        linear-gradient(336deg, rgba(0,0,255,.8), rgb(255, 0, 128) 70.71%);;
+    text-align: center;
+    align-content: center;
+    padding: none;
+}
+
+#loader {
+  position: absolute;
+  display: block;
+  z-index: 3;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid beige;
+  border-radius: 50%;
+  border-top: 16px solid darkgrey;
+  width: 120px;
+  height: 120px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.greeter {
+    padding: none;
+    padding-top: 3vh;
+    text-align: center;
+    font-size: 4vh;
+}
+
+.logo {
+    padding: none;
+    width: 30vh;
+}
+
+.entry {
+    text-align: center;
+    font-size: 3.5vh;
+    padding: none;
+    margin: none;
+}
+
+.inp {
+    color: black;
+    font-size: 3.5vh;
+    text-align: left;
+    width: 90%;
+    height: 6vh;
+    text-align: center;
+
+    border: 2px solid rgba(70, 68, 68, 0.39);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.inp:focus {
+    outline: none !important;
+    border: 2px solid violet;
+}
+
+#sign_in_button {
+    height: 7vh;
+    width: 21vh;
+    font-size: 3.5vh;
+    border-radius: 20px;
+    margin-top: 7vh;
+}
+
+#error {
+    margin-top: 1vh;
+    font-size: 2vh;
+    color: red;
+}
+
+#login{
+    display: block;
+    text-align: center;
+    z-index: 1;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    margin: auto;
+
+    width: 80vw;
+    height: 90vh;
+    margin-top: 5vh;
+    opacity: 100%;
+}
+
+#dashboard{
+    position: fixed;
+    display: none;
+    z-index: 2;
+    width: 100%; 
+    height: 100%; 
+    text-align: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: auto; 
+}
+
+#new_val{
+    position: fixed;
+    display: none;
+    z-index: 1;
+    width: 50%;
+    height: 90%;
+    text-align: center;
+    top: 5%;
+    left: 25%;
+    right: 25%;
+    bottom: 5%;
+    background-color: lavender;
+    cursor: auto; 
+    border-radius: 25px;
+}
+
+.stytxt{
+    color: black;
+    font-size: 20px;
+    text-align: left;
+}

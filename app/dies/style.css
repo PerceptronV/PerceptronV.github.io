@@ -1,0 +1,18 @@
+body {
+    font-size: 5vh;
+    text-align: center;
+}
+
+label {
+    margin-left: 3vh;
+}
+
+input {
+    width: 5vh;
+    height: 5vh;
+}
+
+.heading {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 10vh;
+}
