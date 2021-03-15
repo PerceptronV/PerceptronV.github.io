@@ -7,12 +7,18 @@ var tasks_template = {
     '論': false,
 }
 
+function str2bool(str) {
+    return str == "true";
+}
+
 function fillstatus() {
     var copy = tasks_template;
     var keys = Object.keys(tasks_template);
-    for (var i in keys) copy[keys[i]] = localStorage.getItem(keys[i]) != null ?
-                                        Boolean(localStorage.getItem(keys[i])) :
-                                        tasks_template[keys[i]];
+
+    for (var i in keys) {
+        var cache = localStorage.getItem(keys[i]);
+        copy[keys[i]] = cache != null ? str2bool(cache) : tasks_template[keys[i]];
+    }
     return copy;
 }
 
@@ -30,9 +36,9 @@ function render(tasks) {
             checkbox.id = keys[i];
             checkbox.checked = tasks[keys[i]]
             checkbox.onclick = function(){
-                var instance = document.getElementById(keys[i]);
-                localStorage.setItem(keys[i], String(instance.checked));
-                console.log(keys[i], String(instance.checked));
+                for (var j in keys) {
+                    localStorage.setItem(keys[j], String(document.getElementById(keys[j]).checked));
+                }
             }
 
         var label = document.createElement('label'); 
