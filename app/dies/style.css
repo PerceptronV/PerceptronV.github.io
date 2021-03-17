@@ -7,9 +7,10 @@ label {
     margin-left: 3vh;
 }
 
-input {
+input[type="checkbox"] {
     width: 5vh;
     height: 5vh;
+    vertical-align: middle;
 }
 
 .heading {
