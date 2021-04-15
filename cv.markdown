@@ -27,33 +27,35 @@ I am passionate about technology as it controls the pulse of our rapidly evolvin
 
 * __Machine Learning / Data Science__: Python, TensorFlow, Keras, Pandas, Numpy
 
-* __Web__: HTML, CSS, JavaScript, basic JQuery
+* __Web__: HTML, CSS, JavaScript, basic ReactJs (with NextJs), JQuery
 
-* __IoT__: Arduino, Firebase
+* __IoT__: Arduino, Firebase, Raspberry Pi
 
 * __CAD__: Onshape
 
 * __Algorithms (basic)__: basic C/C++, simple concepts: asmptotic notation, BFS, DFS, etc.
 
-* __Language__: fluent in English and Chinese (both Cantonese and Mandarin)
+* __Language__: fluent in English, Cantonese, Mandarin, and learning Spanish and Latin
 
 
 ### Experience
 
+* Currently interning at [Carbonbase](https://www.carbonbase.co/) for [Project Ark](http://project-ark.co/), a blockchain-based platform that allows collectors to invest in NFTs which directly fund wildlife, connecting artists, collectors, and environmental impact
+
 * NeurIPS 2020 Virtual Attendee
 
-* undertaken individual NLP research, guided by a [CUHK Electronics Engineering](http://www.ee.cuhk.edu.hk/en-gb/) professor
+* Undertaken individual NLP research, guided by a [CUHK Electronics Engineering](http://www.ee.cuhk.edu.hk/en-gb/) professor
 
 
 #### Projects
 
-* developed a few machine learning projects from scratch with TensorFlow, including a COVID-cases predictor, exchange rates predictor, Haiku writer, and a few GAN systems
+* Developed a few machine learning projects from scratch with TensorFlow, including a COVID-cases predictor, exchange rates predictor, Haiku writer, and a few GAN systems
 
-* created a basic voice assistant with various APIs and a few custom models, designed to improve elderly safety and reduce loneliness. Outline available [here]({{ site.baseurl }}/assets/hosting/polaris.pdf).
+* Created a basic voice assistant with various APIs and a few custom models, designed to improve elderly safety and reduce loneliness. Outline available [here]({{ site.baseurl }}/assets/hosting/polaris.pdf).
 
-* implemented a [push-up counter]({{ site.baseurl }}/beta/graviton.html) with public APIs
+* Implemented a [push-up counter]({{ site.baseurl }}/beta/graviton.html) with public APIs
 
-* developing a simulated C++ interpreter (beta)
+* Developing a simulated C++ interpreter (beta)
 
 
 ### Awards, Associations and Competitions
@@ -80,22 +82,22 @@ I am passionate about technology as it controls the pulse of our rapidly evolvin
 
 ### Leadership and Volunteering
 
-* co-leading an online volunteering effort, aimed at offering a philosophy primer for state-school students from Year 7 to Year 9
+* Currently leading an online volunteering effort, aimed at offering philosophy podcasts as teaching material, targetted to inspire state-school students from Year 7 to Year 9
 
-* co-founding an AI-centred team at school, hosting periodic challenges and hopefully tutorials in the future
+* Currently founding an AI-centred team at school, hosting challenges and gathering enthusiasts to build and develop as a community
 
-* led an online volunteering effort to tutor young children from less advantaged backgrounds, connecting with the YWCA to hold a fun and interactive English course over 10 weeks during the 2020 lockdown
+* Previously led an online volunteering effort to tutor young children from less advantaged backgrounds, connecting with the YWCA to hold a fun and interactive English course over 10 weeks during the 2020 lockdown
 
-* visiting volunteer at an orphanage in Sichuan, China during Easter 2019
+* Previously a visiting volunteer at an orphanage in Sichuan, China during Easter 2019
 
 
 ### Commitments (in-school)
 
-* delivered lectures to the Drone Society, Science society, Junior Gore Society (philosophy), and Math Society
+* Delivered lectures to the Drone Society, Science society, Junior Gore Society (philosophy), and Math Society
 
-* regular at Marmots Club (rock climbing), Debating Society, and the Boy's IT Committee
+* A regular at Marmots Club (rock climbing), Debating Society, and the Boy's IT Committee
 
 
 ### Publications
 
-* published poems on the 9th and 11th issues of the [Balloons Lit. Journal](https://www.balloons-lit-journal.com/)
+* Published poems on the 9th and 11th issues of the [Balloons Lit. Journal](https://www.balloons-lit-journal.com/)

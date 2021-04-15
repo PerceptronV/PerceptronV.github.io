@@ -232,10 +232,10 @@ html {
 
 .greeter{
     width: 90%;
-    height: 20%;
-    padding-top: 5%;
     position: static;
+    padding-top: 4vh;
     margin-left: 5%;
+    margin-top: 27vh;
     
     border-style: solid;
     border-color: aquamarine;
@@ -253,7 +253,6 @@ html {
     animation-delay: 1.2s;
     animation-fill-mode: backwards;
     z-index: 1;
-    margin-top: 27vh;
     
     opacity: 1;
     border-color: aquamarine;
