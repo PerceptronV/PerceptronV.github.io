@@ -4,6 +4,17 @@ title: My CV
 permalink: /cv/
 ---
 
+<!-- School CV guidance
+    register for proper email
+
+    personal contact details
+    personal statement
+    work experience
+    education
+    skills
+    hobbies/interests
+    references
+-->
 
 ##  YIDING SONG (Vincent)
 
