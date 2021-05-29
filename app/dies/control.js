@@ -56,7 +56,7 @@ var streaks_template = {
     '健': false,
     '書': false,
     '術': false,
-    '左': false,
+    '西': false,
     '數': false,
     '論': false,
 }
