@@ -1,0 +1,144 @@
+.stybut{
+    color: white;
+    height: 40px;
+    width: 200px;
+    text-align: center;
+    background-color: darkseagreen;
+    border: None;
+    transition: background-color 1s;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.stybut:hover{
+    border: blue;
+    background-color: darkolivegreen;
+    cursor: pointer;
+}
+
+.stytxt{
+    color: black;
+    font-size: 20px;
+    text-align: left;
+}
+
+.newbut{
+    width: 100px;
+    background-color: dodgerblue;
+    transition: background-color 0.5s width 0.5s;
+}
+
+.newbut:hover{
+    background-color: cadetblue;
+}
+
+.float{
+    position: sticky;
+    top: 0;
+}
+
+table {
+    padding: 10px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+tr{
+    z-index: 2;
+}
+
+td{
+    border: 2px solid white;
+    text-align: center;
+    padding: 8px;
+    color: black;
+}
+
+th {
+    border: 2px solid white;
+    text-align: center;
+    padding: 8px;
+    color: black;
+    background-color: beige;
+}
+
+tr:nth-child(odd) {
+    background-color: aliceblue;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+#loader {
+  position: absolute;
+  display: block;
+  z-index: 1000;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid beige;
+  border-radius: 50%;
+  border-top: 16px solid darkgrey;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#login{
+    position: fixed;
+    display: block;
+    z-index: 1;
+    width: 50%;
+    height: 90%;
+    text-align: center;
+    top: 5%;
+    left: 25%;
+    right: 25%;
+    bottom: 5%;
+    background-color: white;
+    cursor: auto; 
+    border-radius: 25px;
+}
+#dashboard{
+    position: fixed;
+    display: none;
+    z-index: 2;
+    width: 100%; 
+    height: 100%; 
+    text-align: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: auto;
+    overflow-y: auto;
+}
+#new_val{
+    position: fixed;
+    display: none;
+    z-index: 1;
+    width: 50%;
+    height: 90%;
+    text-align: center;
+    top: 5%;
+    left: 25%;
+    right: 25%;
+    bottom: 5%;
+    background-color: lavender;
+    cursor: auto; 
+    border-radius: 25px;
+}
