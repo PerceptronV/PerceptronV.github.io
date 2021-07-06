@@ -1,3 +1,15 @@
+function edit_entry(d, sys, dia, pul, rem){
+    time_str = `${d.getFullYear()}-${pad_zero(d.getMonth()+1)}-${
+                pad_zero(d.getDate())}T${pad_zero(d.getHours())}:${
+                pad_zero(d.getUTCMinutes())}:${pad_zero(d.getUTCSeconds())}`;
+    document.getElementById('time_in').value  = time_str;
+    document.getElementById('systole_in').value  = sys;
+    document.getElementById('diastole_in').value = dia;
+    document.getElementById('pulse_in').value = pul;
+    document.getElementById('remarks_in').value = rem;
+    show_entry();
+}
+
 function show_entry(){
     document.getElementById("new_val").style.display = "block";
     document.getElementById("dashboard").style.display = "none";
@@ -70,7 +82,7 @@ function new_entry(){
 
     if (systole != null && diastole != null && time != ""){
         
-        document.getElementById('time_in').value  = ""
+        document.getElementById('time_in').value  = "";
         document.getElementById('systole_in').value  = "";
         document.getElementById('diastole_in').value = "";
         document.getElementById('pulse_in').value = "";
@@ -161,11 +173,35 @@ function update(){
                 cell3.innerHTML = repNull(child.child('diastole').val());
                 cell4.innerHTML = repNull(child.child('pulse').val());
                 cell5.innerHTML = child.child('remarks').val();
+                row.id = child.key;
             })
         }
         getChartData();
+        addRowHandlers();
     });
 }
+
+// From https://stackoverflow.com/questions/1207939/adding-an-onclick-event-to-a-table-row
+function addRowHandlers() {
+    var table = document.getElementById("table");
+    var rows = table.getElementsByTagName("tr");
+    for (i = 1; i < rows.length; i++) {
+      var currentRow = table.rows[i];
+      var createClickHandler = function(row) {
+        return function() {
+            var cells = row.getElementsByTagName("td");
+            edit_entry(
+                parse_time(row.id),
+                cells[1].innerHTML,
+                cells[2].innerHTML,
+                cells[3].innerHTML,
+                cells[4].innerHTML
+            );
+        };
+      };
+      currentRow.onclick = createClickHandler(currentRow);
+    }
+  }
 
 function sign_in(){
     document.getElementById("loader").style.display = "block";
