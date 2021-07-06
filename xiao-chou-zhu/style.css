@@ -6,7 +6,7 @@
     background-color: darkseagreen;
     border: None;
     transition: background-color 1s;
-    font-size: 20px;
+    font-size: 1.5rem;
     border-radius: 10px;
 }
 
@@ -35,6 +35,49 @@
 .float{
     position: sticky;
     top: 0;
+}
+
+.logo {
+    padding: none;
+    width: 30vh;
+}
+
+.entry_f {
+    text-align: center;
+    text-transform: none;
+    color: black;
+    font-size: 3.5vh;
+    padding: none;
+    margin: none;
+}
+
+.inp {
+    color: black;
+    font-size: 3.5vh;
+    text-align: left;
+    width: 90%;
+    height: 6vh;
+    text-align: center;
+
+    border: 2px solid rgba(70, 68, 68, 0.39);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.inp:focus {
+    outline: none !important;
+    border: 2px solid violet;
+}
+
+.greeter {
+    padding: none;
+    padding-top: 3vh;
+    text-align: center;
+    font-size: 4vh;
+}
+
+a {
+    text-decoration: none;
 }
 
 table {
@@ -70,6 +113,19 @@ tr:nth-child(even) {
     background-color: white;
 }
 
+body {
+    background-image:
+        linear-gradient(217deg, rgba(255, 0, 0, 0.8), rgba(0, 195, 255, 0.801) 70.71%),
+        linear-gradient(127deg, rgba(0,255,0,.8), rgba(238, 255, 0, 0.788) 70.71%),
+        linear-gradient(336deg, rgba(0,0,255,.8), rgb(255, 0, 128) 70.71%);;
+    text-align: center;
+    align-content: center;
+    padding: none;
+    background-repeat: no-repeat;
+    height: 100vh;
+    overflow: hidden;
+}
+
 #loader {
   position: absolute;
   display: block;
@@ -99,20 +155,19 @@ tr:nth-child(even) {
 }
 
 #login{
-    position: fixed;
     display: block;
-    z-index: 1;
-    width: 50%;
-    height: 90%;
     text-align: center;
-    top: 5%;
-    left: 25%;
-    right: 25%;
-    bottom: 5%;
-    background-color: white;
-    cursor: auto; 
-    border-radius: 25px;
+    z-index: 1;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    margin: auto;
+
+    width: 80vw;
+    height: 90vh;
+    margin-top: 5vh;
+    opacity: 100%;
 }
+
 #dashboard{
     position: fixed;
     display: none;
@@ -127,12 +182,13 @@ tr:nth-child(even) {
     cursor: auto;
     overflow-y: auto;
 }
+
 #new_val{
     position: fixed;
     display: none;
     z-index: 1;
     width: 50%;
-    height: 90%;
+    height: auto;
     text-align: center;
     top: 5%;
     left: 25%;
@@ -141,4 +197,29 @@ tr:nth-child(even) {
     background-color: lavender;
     cursor: auto; 
     border-radius: 25px;
+    overflow-y: scroll;
+    padding-bottom: 5vh;
+}
+
+#error {
+    margin-top: 1vh;
+    font-size: 2vh;
+    color: red;
+}
+
+#sign_in_button {
+    height: 7vh;
+    width: 21vh;
+    font-size: 3.5vh;
+    border-radius: 20px;
+    margin-top: 7vh;
+}
+
+#chart_parent {
+    width: 90%;
+    margin: auto;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    padding: 5vh;
+    background-color: white;
 }

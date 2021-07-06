@@ -8,6 +8,16 @@ function exit_entry(){
     document.getElementById("dashboard").style.display = "block";
 }
 
+function initialize(user){
+    name = user.displayName;
+    email = user.email;
+    photoUrl = user.photoURL;
+    emailVerified = user.emailVerified;
+    uid = user.uid;
+    update();
+    var timer = setInterval(update, 3000);
+}
+
 function isValidDate(d) {
     return d instanceof Date && !isNaN(d);
 }
@@ -34,39 +44,52 @@ function parse_time(s){
     ));
 }
 
+function repNull(val){
+    if (val == null || val == NaN) return ui_dat['no_data'];
+    return val;
+}
+
+function nan2null(val){
+    if (isNaN(val)) return null;
+    return val;
+}
+
+function empt2null(s){
+    if (s == "") return null;
+    return s;
+}
+
 function new_entry(){
     var database = firebase.database();
-    var d = new Date();
 
-    var time = format_time(d);
+    var time     = document.getElementById('time_in').value;
+    var systole  = nan2null(parseInt(document.getElementById('systole_in').value));
+    var diastole = nan2null(parseInt(document.getElementById('diastole_in').value));
+    var pulse    = nan2null(parseInt(document.getElementById('pulse_in').value));
+    var remarks  = empt2null(document.getElementById('remarks_in').value);
 
-    var systole=document.getElementById('systole').value;
-    var diastole=document.getElementById('diastole').value;
+    if (systole != null && diastole != null && time != ""){
+        
+        document.getElementById('time_in').value  = ""
+        document.getElementById('systole_in').value  = "";
+        document.getElementById('diastole_in').value = "";
+        document.getElementById('pulse_in').value = "";
+        document.getElementById('remarks_in').value = "";
 
-    document.getElementById('systole').value  = "";
-    document.getElementById('diastole').value = "";
+        time = format_time(new Date(time));
 
-    if (systole!="" && diastole!=""){
         var updata  = {}
         updata[time] = {
-            time: time,
-            systole: systole,
-            diastole: diastole
+            time:     time,
+            systole:  systole,
+            diastole: diastole,
+            pulse:    pulse,
+            remarks:  remarks
         }
         var ref = database.ref('user_data/'+uid+'/pressure_data').update(updata);
         document.getElementById("new_val").style.display = "none";
         document.getElementById("dashboard").style.display = "block";
     }
-}
-
-function initialize(user){
-    name = user.displayName;
-    email = user.email;
-    photoUrl = user.photoURL;
-    emailVerified = user.emailVerified;
-    uid = user.uid;
-    update();
-    var timer = setInterval(update,3000);
 }
 
 function update(){
@@ -78,14 +101,18 @@ function update(){
         while (table.rows.length > 1){
             table.deleteRow(1);
         }
-        if (snap.val()==null){
+        if (snap.val() == null){
             var row   = table.insertRow(-1);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             var cell3 = row.insertCell(2);
-            cell1.innerHTML="沒有資料";
-            cell2.innerHTML="沒有資料";
-            cell3.innerHTML="沒有資料";
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            cell1.innerHTML = ui_dat['no_data'];
+            cell2.innerHTML = ui_dat['no_data'];
+            cell3.innerHTML = ui_dat['no_data'];
+            cell4.innerHTML = ui_dat['no_data'];
+            cell5.innerHTML = ui_dat['no_data'];
         }
         else{
             snap.forEach(function(child){
@@ -93,6 +120,8 @@ function update(){
                 var cell1 = row.insertCell(0);
                 var cell2 = row.insertCell(1);
                 var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
                 
                 // Detect and replace legacy date formats
                 date_obj = new Date(child.key);
@@ -102,7 +131,9 @@ function update(){
                     updata[time] = {
                         time:     time,
                         systole:  child.child('systole').val(),
-                        diastole: child.child('diastole').val()
+                        diastole: child.child('diastole').val(),
+                        pulse:    child.child('pulse').val(),
+                        remarks:  child.child('remarks').val(),
                     }
                     var ref = db.ref('user_data/'+uid+'/pressure_data').update(updata);
 
@@ -110,27 +141,52 @@ function update(){
                 }
                 else date_obj = parse_time(child.key);
 
-                cell1.innerHTML=date_obj.toLocaleString();
-                cell2.innerHTML=child.child('systole').val();
-                cell3.innerHTML=child.child('diastole').val();
+                // Detect and replace legacy value datatypes
+                if (typeof child.child('systole').val() == 'string'){
+                    time = format_time(date_obj);
+                    var updata  = {}
+                    updata[time] = {
+                        time:     time,
+                        systole:  nan2null(parseInt(child.child('systole').val())),
+                        diastole: nan2null(parseInt(child.child('diastole').val())),
+                        pulse:    nan2null(parseInt(child.child('pulse').val())),
+                        remarks:  child.child('remarks').val(),
+                    }
+                    console.log(updata);
+                    var ref = db.ref('user_data/'+uid+'/pressure_data').update(updata);
+                }
+
+                cell1.innerHTML = repNull(date_obj.toLocaleString());
+                cell2.innerHTML = repNull(child.child('systole').val());
+                cell3.innerHTML = repNull(child.child('diastole').val());
+                cell4.innerHTML = repNull(child.child('pulse').val());
+                cell5.innerHTML = child.child('remarks').val();
             })
         }
+        getChartData();
     });
 }
 
 function sign_in(){
     document.getElementById("loader").style.display = "block";
-    var error=false;
     var email = document.getElementById('usn').value;
     var password = document.getElementById('pswd').value;
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-        error=true;
+
+    firebase.auth().signInWithEmailAndPassword(email, password).then(function(creds) {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById('error').innerHTML = "";
+        initialize(user);
+        getChartData();
+    }).catch(function(error) {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById('error').innerHTML = "用戶名或密碼出錯";
     });
+
     document.getElementById('usn').value="";
     document.getElementById('pswd').value="";
+
     var email = "";
-    var password = "";
-    document.getElementById("loader").style.display = "none";
+    var password = "";                
 }
 
 function sign_out(){
@@ -140,7 +196,61 @@ function sign_out(){
         document.getElementById("dashboard").style.display = "none";
         document.getElementById("login").style.display = "block";
         document.getElementById("loader").style.display = "none";
+        var new_times_labels    = [];
+        var new_systole_points  = [];
+        var new_diastole_points = [];
+        var new_pulse_points    = [];
+        getChartData();
     }).catch(function(error) {
         document.getElementById("loader").style.display = "none";
     });
+}
+
+function downloadCSV(filename){
+    var rows =[
+        [
+            ui_dat['time_header'],
+            ui_dat['systole_header'],
+            ui_dat['diastole_header'],
+            ui_dat['pulse_header'],
+            ui_dat['remarks_header'],
+        ]
+    ];
+
+    var ref = firebase.database().ref('user_data/' + uid + "/pressure_data").once("value");
+    ref.then(function(snap){
+        if (snap.val() != null){
+            snap.forEach(function(child){
+                date = parse_time(child.key).toLocaleString().replaceAll(',', ';');
+                rows.splice(1, 0, [
+                    date,
+                    child.child('systole').val(),
+                    child.child('diastole').val(),
+                    child.child('pulse').val(),
+                    child.child('remarks').val(),
+                ]);
+            })
+        }
+        // From https://www.revisitclass.com/css/how-to-export-download-the-html-table-to-excel-using-javascript/
+        // {
+            csvContent = "data:text/csv;charset=utf-8,";
+
+            rows.forEach(function(rowArray){
+                csvContent += rowArray.join(",") + "\r\n";
+            });
+
+            /* create a hidden <a> DOM node and set its download attribute */
+            var encodedUri = encodeURI(csvContent);
+            var link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", filename);
+            document.body.appendChild(link);
+            
+            link.click();
+        // }
+    });
+}
+
+function download(){
+    downloadCSV('pressure_data.csv');
 }
