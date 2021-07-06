@@ -242,7 +242,36 @@ function sign_out(){
     });
 }
 
-function downloadCSV(filename){
+function autoFillEndStartDate(){
+    var ref = firebase.database().ref('user_data/' + uid + "/pressure_data").once("value");
+    ref.then(function(snap){
+        var date_bounds = [
+            new Date(),
+            new Date()
+        ]
+        var start_filled = false;
+
+        if (snap.val() != null){
+            snap.forEach(function(child){
+                if (!start_filled) {
+                    start_filled = true;
+                    date_bounds.splice(0, 1, parse_time(child.key));
+                } else {
+                    date_bounds.splice(1, 1, parse_time(child.key));
+                }
+            });
+        }
+
+        document.getElementById('start_in').value = `${date_bounds[0].getFullYear()}-${
+                                                    pad_zero(date_bounds[0].getMonth()+1)}-${
+                                                    pad_zero(date_bounds[0].getDate())}`
+        document.getElementById('end_in').value = `${date_bounds[1].getFullYear()}-${
+                                                        pad_zero(date_bounds[1].getMonth()+1)}-${
+                                                        pad_zero(date_bounds[1].getDate())}`
+    });
+}
+
+function downloadCSV(filename, lower_bound, upper_bound){
     var rows =[
         [
             ui_dat['time_header'],
@@ -257,16 +286,20 @@ function downloadCSV(filename){
     ref.then(function(snap){
         if (snap.val() != null){
             snap.forEach(function(child){
-                date = parse_time(child.key).toLocaleString().replaceAll(',', ';');
-                rows.splice(1, 0, [
-                    date,
-                    child.child('systole').val(),
-                    child.child('diastole').val(),
-                    child.child('pulse').val(),
-                    child.child('remarks').val(),
-                ]);
+                var time_obj = parse_time(child.key);
+                if (lower_bound <= time_obj && time_obj < upper_bound) {
+                    var date = time_obj.toLocaleString().replaceAll(',', ';');
+                    rows.splice(1, 0, [
+                        date,
+                        child.child('systole').val(),
+                        child.child('diastole').val(),
+                        child.child('pulse').val(),
+                        child.child('remarks').val(),
+                    ]);
+                }
             })
         }
+
         // From https://www.revisitclass.com/css/how-to-export-download-the-html-table-to-excel-using-javascript/
         // {
             csvContent = "data:text/csv;charset=utf-8,";
@@ -288,5 +321,9 @@ function downloadCSV(filename){
 }
 
 function download(){
-    downloadCSV('pressure_data.csv');
+    lb = new Date(document.getElementById('start_in').value);
+    ub = new Date(document.getElementById('end_in').value);
+    ub.setDate(ub.getDate() + 1);
+
+    downloadCSV('pressure_data.csv', lb, ub);
 }

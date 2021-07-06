@@ -127,6 +127,14 @@ var UI_text = {
         'en-GB': 'Piggy Bank Dashboard',
         'en': 'Piggy Bank Dashboard'
     },
+    modal_header: {
+        'zh-TW': '選擇時間段',
+        'zh-CN': '選擇時間段',
+        'zh': '選擇時間段',
+        'en-US': 'Choose Timespan',
+        'en-GB': 'Choose Timespan',
+        'en': 'Choose Timespan'
+    },
     new_val_text: {
         'zh-TW': '小臭豬新增血壓！',
         'zh-CN': '小臭豬新增血壓！',
@@ -135,7 +143,7 @@ var UI_text = {
         'en-GB': 'New Entry',
         'en': 'New Entry'
     },
-    exit_newval: {
+    exit: {
         'zh-TW': '退出',
         'zh-CN': '退出',
         'zh': '退出',
@@ -190,5 +198,11 @@ var dashboard_app = new Vue({
 
 var new_val_app = new Vue({
     el: '#new_val',
+    data: ui_dat
+})
+
+
+var downloadModal_app = new Vue({
+    el: '#downloadModal',
     data: ui_dat
 })
