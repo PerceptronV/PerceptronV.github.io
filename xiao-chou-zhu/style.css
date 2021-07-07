@@ -225,6 +225,10 @@ body {
     margin: auto;
     margin-top: 5vh;
     margin-bottom: 5vh;
-    padding: 5vh;
+    padding: 10px;
     background-color: white;
+}
+
+#delete_entry_button{
+    display: none;
 }

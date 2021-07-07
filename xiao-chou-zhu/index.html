@@ -59,7 +59,7 @@
                 </button>
             </div>
             <div id='toolbar' style="position: fixed; left: 78%; width: 20%; z-index: 100;">
-                <button onclick="show_entry()" id="sign_in_button" class='stybut newbut' style="margin-top: 10px; width: auto;">
+                <button onclick="config_new_entry()" id="sign_in_button" class='stybut newbut' style="margin-top: 10px; width: auto;">
                     {{ new_log }}
                 </button>
                 <button onclick="sign_out()" id="sign_in_button" class='stybut' style='width: auto; margin-left: 15px; margin-top: 10px;'>
@@ -94,12 +94,18 @@
             <div style="padding-bottom: 3%;"><a class='stytxt'>{{ diastole_header }}: </a><input type="number" id="diastole_in" class='stytxt' placeholder="請輸入"></div> 
             <div style="padding-bottom: 3%;"><a class='stytxt'>{{ pulse_header }}: </a><input type="number" id="pulse_in" class='stytxt' placeholder="請輸入"></div> 
             <div style="padding-bottom: 3%;"><a class='stytxt'>{{ remarks_header }}: </a><input type="text" id="remarks_in" class='stytxt' placeholder="請輸入"></div> 
-            <button onclick="exit_entry()" id="exit_button" class='stybut' style='align-self: center; margin-right: 15px;'>
-                {{ exit }}
-            </button>
-            <button onclick="new_entry()" id="new_entry_button" class='stybut' style='align-self: center; margin-left: 15px;'>
-                {{ new_newval }}
-            </button>
+            
+            <div class="d-flex p-2">
+                <button onclick="exit_entry()" id="exit_button" class='stybut' style='align-self: center; margin-right: 15px;'>
+                    {{ exit }}
+                </button>
+                <button onclick="delete_entry()" id="delete_entry_button" class='stybut' style='align-self: center; margin-left: 15px;'>
+                    {{ delete_data }}
+                </button>
+                <button onclick="new_entry()" id="new_entry_button" class='stybut' style='align-self: center; margin-left: 15px;'>
+                    {{ newval }}
+                </button>
+            </div>
         </div>
         
         
@@ -164,6 +170,7 @@
             });
         </script>
         <script>
+            var isAnEdit, oldTime="";
         </script>
     </body>
 </html>

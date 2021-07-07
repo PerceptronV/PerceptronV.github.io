@@ -151,7 +151,7 @@ var UI_text = {
         'en-GB': 'Exit',
         'en': 'Exit'
     },
-    new_newval: {
+    newval: {
         'zh-TW': '新增',
         'zh-CN': '新增',
         'zh': '新增',
@@ -166,7 +166,15 @@ var UI_text = {
         'en-US': 'No Data',
         'en-GB': 'No Data',
         'en': 'No Data'
-    }
+    },
+    delete_data: {
+        'zh-TW': '刪除',
+        'zh-CN': '刪除',
+        'zh': '刪除',
+        'en-US': 'Delete',
+        'en-GB': 'Delete',
+        'en': 'Delete'
+    },
 };
 
 function generateData(lst, defaultLang) {

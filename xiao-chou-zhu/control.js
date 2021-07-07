@@ -7,17 +7,32 @@ function edit_entry(d, sys, dia, pul, rem){
     document.getElementById('diastole_in').value = dia;
     document.getElementById('pulse_in').value = pul;
     document.getElementById('remarks_in').value = rem;
+    oldTime = time_str;
+    isAnEdit = true;
+    show_entry();
+}
+
+function config_new_entry(){
+    isAnEdit = false;
+    oldTime = "";
     show_entry();
 }
 
 function show_entry(){
     document.getElementById("new_val").style.display = "block";
     document.getElementById("dashboard").style.display = "none";
+    if (isAnEdit) document.getElementById("delete_entry_button").style.display = "block";
+    else document.getElementById("delete_entry_button").style.display = "none";
 }
 
 function exit_entry(){
     document.getElementById("new_val").style.display = "none";
     document.getElementById("dashboard").style.display = "block";
+}
+
+function delete_entry(){
+    deleteOldTimeEntry();
+    exit_entry();
 }
 
 function initialize(user){
@@ -71,6 +86,18 @@ function empt2null(s){
     return s;
 }
 
+function deleteEntry(key){
+    if (key != "") {
+        firebase.database().ref('user_data/'+uid+'/pressure_data/'+key).remove();
+    }
+}
+
+function deleteOldTimeEntry(){
+    if (oldTime != "") {
+        deleteEntry(format_time(new Date(oldTime)));
+    }
+}
+
 function new_entry(){
     var database = firebase.database();
 
@@ -79,6 +106,8 @@ function new_entry(){
     var diastole = nan2null(parseInt(document.getElementById('diastole_in').value));
     var pulse    = nan2null(parseInt(document.getElementById('pulse_in').value));
     var remarks  = empt2null(document.getElementById('remarks_in').value);
+
+    var timeIsChanged = time != oldTime;
 
     if (systole != null && diastole != null && time != ""){
         
@@ -99,6 +128,11 @@ function new_entry(){
             remarks:  remarks
         }
         var ref = database.ref('user_data/'+uid+'/pressure_data').update(updata);
+
+        if (isAnEdit && timeIsChanged) deleteOldTimeEntry();
+
+        oldTime = "";
+
         document.getElementById("new_val").style.display = "none";
         document.getElementById("dashboard").style.display = "block";
     }
