@@ -36,9 +36,14 @@ I am passionate about technology as it controls the pulse of our rapidly evolvin
 
 ### Skills and Hobbies
 
-* __Machine Learning / Data Science__: Python, TensorFlow, Keras, Pandas, Numpy
+* __Machine Learning / Data Science__: 
+    * Primarily interested in Natural Languag Processing (text generation and unsupervised translation)
+    * Familiar with Python, TensorFlow, Keras, Pandas, Numpy
 
-* __Web__: HTML, CSS, JavaScript, basic ReactJs (with NextJs), JQuery
+* __Web__:
+    * Equal interest in frontend and backend
+    * Familiar with HTML, CSS, JavaScript
+    * Learning ReactJs (with NextJs), Django, JQuery
 
 * __IoT__: Arduino, Firebase, Raspberry Pi
 
@@ -51,7 +56,7 @@ I am passionate about technology as it controls the pulse of our rapidly evolvin
 
 ### Experience
 
-* Currently interning at [Carbonbase](https://www.carbonbase.co/) for [Project Ark](http://project-ark.co/), a blockchain-based platform that allows collectors to invest in NFTs which directly fund wildlife, connecting artists, collectors, and environmental impact
+* 3-week internship at [Carbonbase](https://www.carbonbase.co/) for [Project Ark](http://project-ark.co/) (a blockchain-based platform that allows collectors to invest in taylored NFTs which directly fund conservation), where I helped build parts of their website, writing a 3D NFT viewer for a more interactive experience
 
 * NeurIPS 2020 Virtual Attendee
 
@@ -68,16 +73,28 @@ I am passionate about technology as it controls the pulse of our rapidly evolvin
 
 * Developing a simulated C++ interpreter (beta)
 
+* Retrained a GPT-2 on past editions of our school magazine, allowing me to contribute numerous AI-generated articles to the weekly publication
+
 
 ### Awards, Associations and Competitions
+
+
 
 * Member of the [Hong Kong Academy for Gifted Education](https://www.hkage.org.hk/en/) (HKAGE)
 
 * Mentee of [Global Talent Mentoring](https://globaltalentmentoring.org/) (application round 2020-2021)
 
-* Senior Maths Challenge 2020 <br/> __Gold__
+* CERN Beamline for Schools Competition 2021 <br/> __Shortlisted__ (In top 26 teams out of 289)
 
-* Intermediate Maths Challenge 2020 <br/> __Gold__
+* Senior Physics Challenge (up to Yr 12) <br/> __Gold__
+
+* Intermediate Physics Challenge 2021 (up to Yr 11) <br/> __Gold__
+
+* London Middle Schools Debating Competition 2021 <br/> __Gold__
+
+* Intermediate Maths Challenge 2021 <br/> __Gold__
+
+* Senior Maths Challenge 2020 <br/> __Gold__
 
 * RSC [Top of the Bench](https://edu.rsc.org/enrichment/top-of-the-bench) Competition 2019-2020 <br/> __National finalist__
 
@@ -93,9 +110,9 @@ I am passionate about technology as it controls the pulse of our rapidly evolvin
 
 ### Leadership and Volunteering
 
-* Currently leading an online volunteering effort, aimed at offering philosophy podcasts as teaching material, targetted to inspire state-school students from Year 7 to Year 9
+* Currently leading an online volunteering effort, aimed at offering philosophy podcasts as teaching material for state-school students from Year 7 to Year 9
 
-* Currently founding an AI-centred team at school, hosting challenges and gathering enthusiasts to build and develop as a community
+* Leading Team Enigma (an AI-centred tech team) at school. We host challenges, deliver lectures, collaborate on projects - and gather enthusiasts to build and develop as a community. Our GitHub organisation is here ([Team Enigma - GitHub](https://github.com/Harrow-Enigma)).
 
 * Previously led an online volunteering effort to tutor young children from less advantaged backgrounds, connecting with the YWCA to hold a fun and interactive English course over 10 weeks during the 2020 lockdown
 
@@ -104,9 +121,13 @@ I am passionate about technology as it controls the pulse of our rapidly evolvin
 
 ### Commitments (in-school)
 
-* Delivered lectures to the Drone Society, Science society, Junior Gore Society (philosophy), and Math Society
+* Delivered lectures to the Drone Society, Science society, Junior Gore Society (philosophy), Math Society, and Computer Science Society
+
+* Member of the Boys' Equality and Diversity Group at school, advocating measures for a more inclusive school life
 
 * A regular at Marmots Club (rock climbing), Debating Society, and the Boy's IT Committee
+
+* Awarded ties for contribution to the Debating Society, Drone Society and Computer Science Society
 
 
 ### Publications
