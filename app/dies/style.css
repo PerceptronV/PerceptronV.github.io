@@ -1,19 +1,41 @@
-body {
-    font-size: 5vh;
-    text-align: center;
-}
-
-label {
-    margin-left: 3vh;
-}
-
 input[type="checkbox"] {
     width: 5vh;
     height: 5vh;
-    vertical-align: middle;
 }
 
-.heading {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 10vh;
+.checkmark{
+    margin-left: 10px;
+}
+
+.tasklist{
+    width: 90%;
+    font-size: 4vh;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.tasklistitems{
+    margin-left: 50px;
+}
+
+.progress-display{
+    margin: auto;
+    margin-bottom: 10px;
+    height: 10px;
+    width: 90%;
+}
+
+@media only screen and (min-width: 768px) {
+    .checkmark{
+        margin-left: 20px;
+    }
+
+    .tasklist{
+        width: 50%;
+    }
+
+    .progress-display{
+        width: 80%;
+        margin-bottom: 20px;
+    }
 }
