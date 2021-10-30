@@ -86,11 +86,11 @@ I am passionate about technology as it controls the pulse of our rapidly evolvin
 
 * CERN Beamline for Schools Competition 2021 <br/> __Shortlisted__ (In top 26 teams out of 289)
 
-* Senior Physics Challenge (up to Yr 12) <br/> __Gold__
+* Senior Physics Challenge (up to Yr 12) <br/> __Silver__
 
 * Intermediate Physics Challenge 2021 (up to Yr 11) <br/> __Gold__
 
-* London Middle Schools Debating Competition 2021 <br/> __Gold__
+* London Middle Schools Debating Competition 2021 <br/> __Winner__
 
 * Intermediate Maths Challenge 2021 <br/> __Gold__
 
