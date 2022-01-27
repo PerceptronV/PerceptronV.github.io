@@ -2,7 +2,7 @@
 layout: post
 title:  "Introducing Scierra!"
 date:   2021-01-14 20:01:12 +0800
-categories: scierra
+categories: scierra langs
 excerpt: a Simulated C++ Interpreter with Recurrent Adaptation.
 ---
 
