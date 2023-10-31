@@ -25,5 +25,5 @@ My other interests include learning ancient languages, creative writing, photogr
 ---
 
 <br/>
-<img src="assets/images/languard_me.jpg" style="height: 40vh; display: block; margin: auto;">
+<img src="{{ site.baseurl }}/assets/images/languard_me.jpg" style="height: 40vh; display: block; margin: auto;">
 <div style="text-align: center; font-style: italic;">I am very very happy after hiking to the top of <a href="https://en.wikipedia.org/wiki/Piz_Languard">Piz Languard.</a></div>
