@@ -56,8 +56,8 @@ var data = {
         },
         {
             label: ui_dat['diastole_header'],
-            backgroundColor: 'rgb(61, 85, 224)',
-            borderColor: 'rgb(61, 85, 224)',
+            backgroundColor: 'rgb(64, 135, 236)',
+            borderColor: 'rgb(64, 135, 236)',
             data: diastole_points,
         },
         {

@@ -1,0 +1,19 @@
+#login{
+    display: block;
+    text-align: center;
+    z-index: 1;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    margin: auto;
+
+    width: 80vw;
+    height: 90vh;
+    margin-top: 5vh;
+    opacity: 100%;
+}
+
+#error {
+    margin-top: 1vh;
+    font-size: 2vh;
+    color: red;
+}

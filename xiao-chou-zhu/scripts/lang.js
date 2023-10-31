@@ -4,8 +4,10 @@ var UI_text = {
     template: {
         'zh-TW': '',
         'zh-CN': '',
+        'zh': '',
         'en-US': '',
-        'en-GB': ''
+        'en-GB': '',
+        'en': ''
     },
     title: {
         'zh-TW': '小臭豬',
@@ -175,6 +177,14 @@ var UI_text = {
         'en-GB': 'Delete',
         'en': 'Delete'
     },
+    delete_data_confirmation: {
+        'zh-TW': '請問您確定要刪除此資料嗎？',
+        'zh-CN': '請問您確定要刪除此資料嗎？',
+        'zh': '請問您確定要刪除此資料嗎？',
+        'en-US': 'Are you sure you want to delete this entry?',
+        'en-GB': 'Are you sure you want to delete this entry?',
+        'en': 'Are you sure you want to delete this entry?'
+    },
 };
 
 function generateData(lst, defaultLang) {
@@ -186,31 +196,3 @@ function generateData(lst, defaultLang) {
 } 
 
 var ui_dat = generateData(Object.keys(UI_text), 'zh');
-
-document.getElementById('usn').placeholder = ui_dat['placeholder'];
-document.getElementById('pswd').placeholder = ui_dat['placeholder'];
-document.getElementById('systole_in').placeholder = ui_dat['placeholder'];
-document.getElementById('diastole_in').placeholder = ui_dat['placeholder'];
-document.getElementById('pulse_in').placeholder = ui_dat['placeholder'];
-document.getElementById('remarks_in').placeholder = ui_dat['placeholder'];
-
-var login_app = new Vue({
-    el: '#login',
-    data: ui_dat
-})
-
-var dashboard_app = new Vue({
-    el: '#dashboard',
-    data: ui_dat
-})
-
-var new_val_app = new Vue({
-    el: '#new_val',
-    data: ui_dat
-})
-
-
-var downloadModal_app = new Vue({
-    el: '#downloadModal',
-    data: ui_dat
-})

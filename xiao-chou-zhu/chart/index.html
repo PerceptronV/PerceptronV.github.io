@@ -15,8 +15,6 @@
         <title>小臭豬</title>
     </head>
     <body>
-        <div id="loader"></div>
-
         <!-- Modal -->
         <div class="modal fade" id="downloadModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 100000;">
             <div class="modal-dialog">
@@ -36,6 +34,25 @@
                 </div>
             </div>
             </div>
+        </div>
+        
+        <div id="loader"></div>
+        
+        <div id='login'>
+            <p class='greeter'>{{ greeter }}</p>
+            <img src="./static/images/icon.png" alt="logo" class="logo"/>
+            <div style="padding-top: 4vh;">
+                <div><p class='entry_f'>{{ username }}</p></div>
+                <input type="normal" id="usn" class='inp' placeholder="請輸入" spellcheck="false"/>
+            </div>
+            <div style="padding-top: 2vh;">
+                <div><p class='entry_f'>{{ password }}</p></div>
+                <input type="password" id="pswd" class='inp' placeholder="請輸入" spellcheck="false"/>
+            </div> 
+            <button onclick="sign_in()" id="sign_in_button" class='stybut'>
+                {{ login }}
+            </button>
+            <div id = 'error'></div>
         </div>
         
         <!--onclick="download()"-->
@@ -112,15 +129,35 @@
 
             firebase.initializeApp(firebaseConfig);
 
+            document.getElementById("pswd").addEventListener("keydown", function(event){
+                if (event.keyCode==13){
+                    event.preventDefault;
+                    document.getElementById("sign_in_button").click();
+                }
+            })
+
             var user = firebase.auth().currentUser;
             var name, email, photoUrl, uid, emailVerified;
 
+            if (user) {
+                document.getElementById("login").style.display = "none";
+                document.getElementById("dashboard").style.display = "block";
+                initialize(user);
+                document.getElementById("loader").style.display = "none";
+            } else {
+                document.getElementById("dashboard").style.display = "none";
+                document.getElementById("login").style.display = "block";
+                document.getElementById("loader").style.display = "none";
+            }
+
             firebase.auth().onAuthStateChanged(function(user) {
                 if (user) {
+                    document.getElementById("login").style.display = "none";
+                    document.getElementById("dashboard").style.display = "block";
                     initialize(user);
-                    getChartData();
                 } else {
-                    window.location.href = "./login/index.html";
+                    document.getElementById("dashboard").style.display = "none";
+                    document.getElementById("login").style.display = "block";
                 }
             });
         </script>
@@ -128,29 +165,9 @@
             var isAnEdit, oldTime="";
         </script>
 
-        <script src="./scripts/lang.js"></script>
-        <script>
-            document.getElementById('systole_in').placeholder = ui_dat['placeholder'];
-            document.getElementById('diastole_in').placeholder = ui_dat['placeholder'];
-            document.getElementById('pulse_in').placeholder = ui_dat['placeholder'];
-            document.getElementById('remarks_in').placeholder = ui_dat['placeholder'];
-
-            var dashboard_app = new Vue({
-                el: '#dashboard',
-                data: ui_dat
-            })
-
-            var new_val_app = new Vue({
-                el: '#new_val',
-                data: ui_dat
-            })
-
-            var downloadModal_app = new Vue({
-                el: '#downloadModal',
-                data: ui_dat
-            })
-        </script>
         <script src="./scripts/control.js"></script>
+        <script src="./scripts/lang.js"></script>
         <script src="./scripts/chart_utils.js"></script>
+        <script src="./scripts/ui.js"></script>
     </body>
 </html>

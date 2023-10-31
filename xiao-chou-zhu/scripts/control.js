@@ -31,8 +31,10 @@ function exit_entry(){
 }
 
 function delete_entry(){
-    deleteOldTimeEntry();
-    exit_entry();
+    if (confirm(ui_dat['delete_data_confirmation'])) {
+        deleteOldTimeEntry();
+        exit_entry();
+    }
 }
 
 function initialize(user){
@@ -212,6 +214,7 @@ function update(){
         }
         getChartData();
         addRowHandlers();
+        document.getElementById('loader').style.display = "none";
     });
 }
 
@@ -235,36 +238,12 @@ function addRowHandlers() {
       };
       currentRow.onclick = createClickHandler(currentRow);
     }
-  }
-
-function sign_in(){
-    document.getElementById("loader").style.display = "block";
-    var email = document.getElementById('usn').value;
-    var password = document.getElementById('pswd').value;
-
-    firebase.auth().signInWithEmailAndPassword(email, password).then(function(creds) {
-        document.getElementById("loader").style.display = "none";
-        document.getElementById('error').innerHTML = "";
-        initialize(user);
-        getChartData();
-    }).catch(function(error) {
-        document.getElementById("loader").style.display = "none";
-        document.getElementById('error').innerHTML = "用戶名或密碼出錯";
-    });
-
-    document.getElementById('usn').value="";
-    document.getElementById('pswd').value="";
-
-    var email = "";
-    var password = "";                
 }
 
 function sign_out(){
     document.getElementById("loader").style.display = "block";
     firebase.auth().signOut().then(function() {
         clearInterval(timer);
-        document.getElementById("dashboard").style.display = "none";
-        document.getElementById("login").style.display = "block";
         document.getElementById("loader").style.display = "none";
         var new_times_labels    = [];
         var new_systole_points  = [];
