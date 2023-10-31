@@ -39,7 +39,8 @@ header_pages:
 minima:
   social_links:
     github: PerceptronV
-    instagram: neutrinovs2018
+    instagram: __neutrinovs__
+    linkedin: yiding-song-vincent
 
 # Build settings
 theme: minima
