@@ -5,4 +5,4 @@
 layout: home
 ---
 
-I do tech because it controls the pulse of our rapid world.
+I am interested in developing explainable systems with human-like intelligence.

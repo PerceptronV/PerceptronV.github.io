@@ -21,7 +21,7 @@
 title: Vincent Song
 email: neutrinovs@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  A tech enthusiast's website, hosting a blog and some cool little projects :)
+  This website hosts stuff about me, a blog, and some cool little projects :)
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  PerceptronV
