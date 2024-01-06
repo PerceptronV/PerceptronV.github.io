@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Vincent Song
+title: Yiding Song
 email: neutrinovs@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   AI, physics, poetry, languages, the outdoors, a blog, and some cool little projects :)
@@ -27,7 +27,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  PerceptronV
 
 author:
-  name: Vincent Song
+  name: Yiding Song
   email: "neutrinovs@gmail.com"
 
 header_pages:

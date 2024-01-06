@@ -18,6 +18,11 @@
     src: url(static/text_font.ttf);
 }
 
+@font-face {
+    font-family: tc_font;
+    src: url(static/NotoSerifTC-ExtraLight.otf);
+}
+
 a{
     color: cornflowerblue;
     text-decoration: none;
