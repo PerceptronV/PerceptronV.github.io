@@ -4,7 +4,7 @@ title: About me
 permalink: /about/
 ---
 
-I am a Year 13 kid at Harrow School. My long-term goal is to advance explainable systems that possess human-like intelligence.
+I am a freshman at Harvard College, planning to pursue a joint concentration in CS and Art History / Maths. My long-term goal is to advance explainable systems that possess human-like intelligence.
 
 ---
 
@@ -19,14 +19,14 @@ I also enjoy doodling with programming languages and built a [pseudocode-to-Pyth
 
 ---
 
-Currently, I'm interested in building models that align astronomical observations across modalities and the neural circuitry of small, multimodal models trained on synthetic test datasets.
+Currently, I'm interested in 1) building models that align astronomical observations across modalities, and 2) from a cognitive science standpoint, building neural networks that can recursively form and operate on abstractions.
 
-At university and beyond, I hope to: 1) build a sound understanding of how and why ML models work in controllable contexts, using tools from physics, cognitive sciences, mechanistic interpretability, or elsewhere; 2) use this knowledge to develop systems with explicit reasoning, better interpretability, and less supervision. 
+At college and beyond, I hope to: 1) build a sound understanding of how and why ML models work in controllable contexts, using tools from physics, cognitive sciences, mechanistic interpretability, or elsewhere; 2) use this knowledge to develop systems with explicit reasoning, better interpretability, and less supervision. 
 
-My other interests include learning ancient languages, creative writing, photography, and philosophy. I have experimented with constructing my own language. I enjoy climbing, camping, and hiking.
+My other interests include learning ancient languages, exploring art, creative writing, photography, and philosophy. I have experimented with constructing my own language. I enjoy climbing, camping, and hiking.
 
 ---
 
 <br/>
 <img src="{{ site.baseurl }}/assets/images/languard_me.jpg" style="height: 40vh; display: block; margin: auto;">
-<div style="text-align: center; font-style: italic;">I am very very happy after hiking to the top of <a href="https://en.wikipedia.org/wiki/Piz_Languard">Piz Languard.</a></div>
+<div style="text-align: center; font-style: italic;">A happy person on the summit of <a href="https://en.wikipedia.org/wiki/Piz_Languard">Piz Languard.</a></div>
