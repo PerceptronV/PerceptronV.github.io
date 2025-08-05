@@ -4,7 +4,7 @@ title: About me
 permalink: /about/
 ---
 
-I am a freshman at Harvard College, planning to pursue a joint concentration in CS and Art History / Maths. My long-term goal is to advance explainable systems that possess human-like intelligence.
+I am a freshman at Harvard College, planning to pursue a joint concentration in CS and Physics / Maths. My long-term goal is to build explainable and scalable machine learning systems for scientific discovery.
 
 ---
 
