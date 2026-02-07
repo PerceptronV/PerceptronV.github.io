@@ -4,7 +4,7 @@ title: About me
 permalink: /about/
 ---
 
-I am a freshman at Harvard College, planning to pursue a joint concentration in CS and Physics / Maths. My long-term goal is to build explainable and scalable machine learning systems for scientific discovery.
+I am a Sophomore at Harvard College concentrating in CS (MBB) and Physics. My research focuses on systems that learn theories about the world with human-like efficiency. At the Gershman Lab and Kempner Institute, I investigate how Transformers meta-learn to perform program induction in-context.
 
 ---
 
