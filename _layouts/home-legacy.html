@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+{%- include head.html -%}
+
+<header class="site-header">
+  <!--
+  <div class="wrapper">
+    {%- assign default_paths = site.pages | map: "path" -%}
+    {%- assign page_paths = site.header_pages | default: default_paths -%}
+    {%- assign titles_size = site.pages | map: 'title' | join: '' | size -%}
+    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+  </div>
+  -->
+</header>
+
+<head>
+  <title>Yiding Song: Home</title>
+  <script src="functools.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <button class="home_icon" onclick='home()' id='home_icon'></button>
+  <ul class='top_tray_left' id='top_tray_left' style="list-style-type:none;">
+      <li class="tray_element_left"><a href="about/">About me</a></li>
+      <!-- <li class="tray_element_left"><a href="cv/">My CV</a></li> -->
+      <li class="tray_element_left"><a href="blog/">My Blog</a></li>
+      <li class="tray_element_left"><a href="#contact-me">Contact Me</a></li>
+  </ul>
+  <div class="top_tray_right">
+      <a href="#contact-me" class="tray_element">Contact Me</a>
+      <a href="blog/" class="tray_element">My blog</a>
+      <!-- <a href="cv/" class="tray_element">My CV</a> -->
+      <a href="about/" class="tray_element">About me</a>
+  </div>
+  <div class="greeter_holder parallax_still" id="greeter_holder">
+      <div class="cross" id="cross">△</div>
+      <div class="half_circle" id="half_circle">◑</div>
+      <div class="circle" id="circle">○</div>
+      <section class="greeter" id='greeter'>
+          <p>
+            <a style="color: whitesmoke;">🧠💻🧗‍♂️</a>
+          </p>
+          <p class='_tag'>
+            <a class='tag' href="about/">I like AI, and some other things too.</a>
+          </p>
+      </section>
+  </div>
+
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+      <div class="home">
+        {%- if page.title -%}
+          <h1 class="page-heading">{{ page.title }}</h1>
+        {%- endif -%}      
+        
+        {% if site.paginate %}
+          {% assign posts = paginator.posts %}
+        {% else %}
+          {% assign posts = site.posts %}
+        {% endif %}
+
+        {{ content }}
+      
+        {%- include blog-list.html -%}
+      
+      </div>
+    </div>
+  </main>
+
+  {%- include footer.html -%}
+  
+</body>
+</html>

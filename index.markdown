@@ -5,4 +5,4 @@
 layout: home
 ---
 
-I am interested in developing explainable systems with human-like intelligence.
+I am interested in systems that learn theories about the world with human-like efficiency.
